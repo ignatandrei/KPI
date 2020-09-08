@@ -105,7 +105,7 @@ namespace TestWebAPI
                 endpoints.MapFallbackToFile("targetsr/{**slug}", "/index.html");
 
                 endpoints.MapFallbackToFile("valuesr/{**slug}", "/index.html");
-
+                endpoints.MapFallbackToFile("kpi/{**slug}", "/index.html");
                 endpoints.MapControllers();
             });
             CreateDatabase(app);

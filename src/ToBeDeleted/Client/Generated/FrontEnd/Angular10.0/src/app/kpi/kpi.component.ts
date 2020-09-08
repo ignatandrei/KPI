@@ -39,7 +39,7 @@ export class KPIComponent implements OnInit {
   ngOnInit(): void {
     this.kpi.SRValVindutaVsPlan().subscribe(it => {
       this.kpiSR = it.sort((a, b) => b.vindutVsPlan - a.vindutVsPlan);
-      this.single = this.kpiSR.map(it => new KV(it.name, (it.vindutVsPlan *100).toFixed(2)));
+      this.single = this.kpiSR.map(it => new KV(it.name, parseFloat ((it.vindutVsPlan *100).toFixed(2))));
 
     });
   }
