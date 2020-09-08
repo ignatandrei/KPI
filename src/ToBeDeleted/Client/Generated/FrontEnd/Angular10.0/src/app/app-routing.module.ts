@@ -47,12 +47,15 @@ import { ValueSRAddComponent } from './WebAPIComponents/ValueSRadd.component';
 import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 
 
-
+import { KPIComponent} from './kpi/kpi.component'
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+
+
+  { path: 'kpi', component:  KPIComponent },
 
 { path: 'client', component: ClientComponent },
 

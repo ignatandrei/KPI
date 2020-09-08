@@ -96,6 +96,7 @@ import { ValueSRComponent } from './WebAPIComponents/ValueSR.component';
 import { ValueSRAddComponent } from './WebAPIComponents/ValueSRadd.component';
 
 import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
+import { KPIComponent } from './kpi/kpi.component';
 
 
 
@@ -106,6 +107,9 @@ import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 @NgModule({
   declarations: [
 
+    KPIComponent,
+
+    
     ClientComponent,
     ClientAddComponent,
 		ClientEditComponent,
@@ -133,7 +137,8 @@ import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 		    AppComponent,
     NavbarComponent,
     AboutComponent,
-    DashboardComponent 
+    DashboardComponent,
+    KPIComponent 
   ],
   imports: [
     FormsModule,
