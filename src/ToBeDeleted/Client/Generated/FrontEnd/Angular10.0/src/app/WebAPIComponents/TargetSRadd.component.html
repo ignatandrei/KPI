@@ -1,0 +1,56 @@
+
+Add  new TargetSR
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>NameSR</td>
+	<td>
+		<input type="text"  [(ngModel)]="dataToAdd.namesr" />
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>TargetValue</td>
+	<td>
+		<input type="text"  [(ngModel)]="dataToAdd.targetvalue" />
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>DataOfTarget</td>
+	<td>
+		<input type="text"  [(ngModel)]="dataToAdd.dataoftarget" />
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+			
+			  <tr>
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+				<td align="left">
+				  <button (click)="cancel()">Back to list of TargetSR</button>
+				</td>
+			  </tr>
+			
+</table>
