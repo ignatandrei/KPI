@@ -98,7 +98,7 @@ import { ValueSRAddComponent } from './WebAPIComponents/ValueSRadd.component';
 import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 import { KPIComponent } from './kpi/kpi.component';
 
-
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 
@@ -141,6 +141,7 @@ import { KPIComponent } from './kpi/kpi.component';
     KPIComponent 
   ],
   imports: [
+    NgxChartsModule,
     FormsModule,
     HttpClientModule,
     BrowserModule,

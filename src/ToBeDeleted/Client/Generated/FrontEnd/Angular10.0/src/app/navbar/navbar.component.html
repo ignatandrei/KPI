@@ -36,7 +36,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       
-      <span>My application</span> 
+      <span>
+        <a routerLink="/">My KPI analysis</a>  
+
+      </span> 
     </mat-toolbar>
     <mat-spinner *ngIf="isLoading"></mat-spinner>    
     <router-outlet></router-outlet>
