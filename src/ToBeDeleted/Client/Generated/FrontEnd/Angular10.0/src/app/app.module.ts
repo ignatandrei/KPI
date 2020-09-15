@@ -99,6 +99,9 @@ import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 import { KPIComponent } from './kpi/kpi.component';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NNDvsUnivComponent } from './WebAPIComponents/NNDvsUniv.component';
+import {NNDvsUnivAddComponent} from './WebAPIComponents/NNDvsUnivadd.component';
+import {NNDvsUnivEditComponent} from'./WebAPIComponents/NNDvsUnivedit.component';
 
 
 
@@ -113,7 +116,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ClientComponent,
     ClientAddComponent,
 		ClientEditComponent,
-		
+    NNDvsUnivComponent,
+    NNDvsUnivAddComponent,
+    NNDvsUnivEditComponent,
     CifreAnualeComponent,
     CifreAnualeAddComponent,
     CifreAnualeEditComponent,

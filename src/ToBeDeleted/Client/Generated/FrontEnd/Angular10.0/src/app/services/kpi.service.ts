@@ -31,4 +31,5 @@ export class KPI_SR{
   public valoareTotalaVinduta: number;
   public valoarePlanTotala: number;
   public vindutVsPlan: number;
+  
 }

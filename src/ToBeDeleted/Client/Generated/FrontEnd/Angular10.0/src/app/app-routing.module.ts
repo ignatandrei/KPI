@@ -48,15 +48,24 @@ import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 
 import { NNDvsUnivComponent} from './WebAPIComponents/NNDvsUniv.component';
 import { KPIComponent} from './kpi/kpi.component'
+import { NNDvsUnivAddComponent } from './WebAPIComponents/NNDvsUnivadd.component';
+import { NNDvsUnivEditComponent } from './WebAPIComponents/NNDvsUnivedit.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
-  {path:'kpi5Data',component: NNDvsUnivComponent},
+  {path: 'kpi5data', component: NNDvsUnivComponent},
 
-  { path: 'kpi', component:  KPIComponent },
+  { path: 'nndvsuniv', component: NNDvsUnivComponent },
+
+  { path: 'nndvsuniv/add', component: NNDvsUnivAddComponent },
+  
+  { path: 'nndvsuniv/edit/:id', component: NNDvsUnivEditComponent },
+  
+
+  { path: 'kpi5Graph', component:  KPIComponent },
 
 { path: 'client', component: ClientComponent },
 

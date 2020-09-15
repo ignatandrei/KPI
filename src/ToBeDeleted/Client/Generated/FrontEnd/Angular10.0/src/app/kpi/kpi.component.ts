@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {KPIService, KPI_SR }from './../services/kpi.service';
+import { NNDvsUnivService } from '../services/NNDvsUniv.service';
 class KV{
   constructor(public name: string, public value: number){
 
@@ -34,11 +35,21 @@ export class KPIComponent implements OnInit {
   };
   //#endregion
   public kpiSR: KPI_SR[];
-  constructor(private kpi: KPIService) { }
+  constructor(private kpi: NNDvsUnivService) { }
 
   ngOnInit(): void {
-    this.kpi.SRValVindutaVsPlan().subscribe(it => {
-      this.kpiSR = it.sort((a, b) => b.vindutVsPlan - a.vindutVsPlan);
+    this.kpi.GetAll().subscribe(it => {
+      this.kpiSR = it.map(a=> {
+
+        const x = new  KPI_SR();
+        x.name = a.salesrepname;
+        x.valoarePlanTotala = a.universenooftotalcustomersfromsalesreparea;
+        x.valoarePlanTotala = a.noofcustomerswithshipment;
+        x.vindutVsPlan = a['percentage'];
+        return x;
+      });
+      
+      this.kpiSR = this.kpiSR.sort((a, b) => b.vindutVsPlan - a.vindutVsPlan);
       this.single = this.kpiSR.map(it => new KV(it.name, parseFloat ((it.vindutVsPlan *100).toFixed(2))));
 
     });
