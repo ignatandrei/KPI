@@ -46,7 +46,7 @@ import { ValueSRAddComponent } from './WebAPIComponents/ValueSRadd.component';
 
 import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
 
-
+import { NNDvsUnivComponent} from './WebAPIComponents/NNDvsUniv.component';
 import { KPIComponent} from './kpi/kpi.component'
 
 const routes: Routes = [
@@ -54,6 +54,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
+  {path:'kpi5Data',component: NNDvsUnivComponent},
 
   { path: 'kpi', component:  KPIComponent },
 

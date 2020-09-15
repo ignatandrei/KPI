@@ -14,25 +14,25 @@ namespace TestWebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class TargetSRController : ControllerBase
+    public class NNDvsUnivController : ControllerBase
     {
-        private readonly IRepository<TargetSR,long> _repository;
+        private readonly IRepository<NNDvsUniv,long> _repository;
 
-        public TargetSRController(IRepository<TargetSR,long> repository)
+        public NNDvsUnivController(IRepository<NNDvsUniv,long> repository)
         {
             _repository = repository;
         }
 
-        // GET: api/TargetSR
+        // GET: api/NNDvsUniv
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TargetSR>>> GetAll()
+        public async Task<ActionResult<IEnumerable<NNDvsUniv>>> GetAll()
         {
             return await _repository.GetAll();
         }
 
-        // GET: api/TargetSR/5
+        // GET: api/NNDvsUniv/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TargetSR>> Get(long id)
+        public async Task<ActionResult<NNDvsUniv>> Get(long id)
         {
             var record = await _repository.FindAfterId(id);
 
@@ -44,13 +44,13 @@ namespace TestWebAPI.Controllers
             return record;
         }
 
-        // PUT: api/TargetSR/5
+        // PUT: api/NNDvsUniv/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<ActionResult<TargetSR>> Put(long id, TargetSR record)
+        public async Task<ActionResult<NNDvsUniv>> Put(long id, NNDvsUniv record)
         {
-            if (id != record.id20200908075619)
+            if (id != record.id20200915075727)
             {
                 return BadRequest();
             }
@@ -60,24 +60,24 @@ namespace TestWebAPI.Controllers
             return record;
         }
 
-        // POST: api/TargetSR
+        // POST: api/NNDvsUniv
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<TargetSR> Insert(TargetSR record)
+        public async Task<NNDvsUniv> Insert(NNDvsUniv record)
         {
             await _repository.Insert(record);
 
             return record;
         }
 
-        // DELETE: api/TargetSR/5
+        // DELETE: api/NNDvsUniv/5
         [HttpDelete("{id}")]
         public async Task<long> Delete(long id)
         {
             
-            await _repository.Delete( new TargetSR(){
-                id20200908075619=id
+            await _repository.Delete( new NNDvsUniv(){
+                id20200915075727=id
             });
 
 

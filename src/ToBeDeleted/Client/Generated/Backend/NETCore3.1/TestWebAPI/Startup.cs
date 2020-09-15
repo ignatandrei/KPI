@@ -52,18 +52,9 @@ namespace TestWebAPI
                             
                     });
                     
-			services.AddTransient<IRepository<Client,long>, Client_Repository>();;
-            
-			services.AddTransient<IRepository<CifreAnuale,long>, CifreAnuale_Repository>();;
-
-            services.AddTransient<IRepository<SalesRep, long>, SalesRep_Repository>(); ;
-
-            services.AddTransient<IRepository<SRCkienti, long>, SRCkienti_Repository>();
-            services.AddTransient<IRepository<TargetSR, long>, TargetSR_Repository>(); ;
-
-            services.AddTransient<IRepository<ValueSR, long>, ValueSR_Repository>(); ;
-
-        }
+			services.AddTransient<IRepository<NNDvsUniv,long>, NNDvsUniv_Repository>();;
+             
+         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -83,7 +74,7 @@ namespace TestWebAPI
                     opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -96,16 +87,8 @@ namespace TestWebAPI
             {
                 
 
-			endpoints.MapFallbackToFile("client/{**slug}","/index.html");
-            
-			endpoints.MapFallbackToFile("cifreanuale/{**slug}","/index.html");
-                endpoints.MapFallbackToFile("salesrep/{**slug}", "/index.html");
-
-                endpoints.MapFallbackToFile("srckienti/{**slug}", "/index.html");
-                endpoints.MapFallbackToFile("targetsr/{**slug}", "/index.html");
-
-                endpoints.MapFallbackToFile("valuesr/{**slug}", "/index.html");
-                endpoints.MapFallbackToFile("kpi/{**slug}", "/index.html");
+			endpoints.MapFallbackToFile("nndvsuniv/{**slug}","/index.html");
+                         
                 endpoints.MapControllers();
             });
             CreateDatabase(app);

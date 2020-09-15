@@ -1,0 +1,56 @@
+
+Add  new NNDvsUniv
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>sales rep name</td>
+	<td>
+		<input type="text"  [(ngModel)]="dataToAdd.salesrepname" />
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>no of customers with shipment </td>
+	<td>
+		<input type="text"  [(ngModel)]="dataToAdd.noofcustomerswithshipment" />
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>(universe) no of total customers from sales rep area</td>
+	<td>
+		<input type="text"  [(ngModel)]="dataToAdd.universenooftotalcustomersfromsalesreparea" />
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+			
+			  <tr>
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+				<td align="left">
+				  <button (click)="cancel()">Back to list of NNDvsUniv</button>
+				</td>
+			  </tr>
+			
+</table>
