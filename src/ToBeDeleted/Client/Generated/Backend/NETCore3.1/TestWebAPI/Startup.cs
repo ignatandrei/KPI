@@ -86,10 +86,9 @@ namespace TestWebAPI
             app.UseEndpoints(endpoints =>
             {
 
-                endpoints.MapFallbackToFile("dashboard/{**slug}", "/index.html");
-                endpoints.MapFallbackToFile("nndvsuniv/{**slug}","/index.html");
-                         
                 endpoints.MapControllers();
+                endpoints.MapFallbackToFile("{**slug}", "index.html");
+
             });
             CreateDatabase(app);
             

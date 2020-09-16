@@ -65,7 +65,7 @@ const routes: Routes = [
   { path: 'nndvsuniv/edit/:id', component: NNDvsUnivEditComponent },
   
 
-  { path: 'kpi5Graph', component:  KPIComponent },
+  { path: 'kpi5graph', component:  KPIComponent },
 
 { path: 'client', component: ClientComponent },
 

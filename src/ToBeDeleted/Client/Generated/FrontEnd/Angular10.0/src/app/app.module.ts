@@ -102,7 +102,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NNDvsUnivComponent } from './WebAPIComponents/NNDvsUniv.component';
 import {NNDvsUnivAddComponent} from './WebAPIComponents/NNDvsUnivadd.component';
 import {NNDvsUnivEditComponent} from'./WebAPIComponents/NNDvsUnivedit.component';
-
+import { UrlSerializer } from '@angular/router';
+import { LowerCaseUrlSerializer } from './routeHelper/lowercase';
 
 
 
@@ -203,7 +204,11 @@ import {NNDvsUnivEditComponent} from'./WebAPIComponents/NNDvsUnivedit.component'
     useFactory: (s: PlatformLocation) => s.getBaseHrefFromDOM(),
     deps: [PlatformLocation]
   },
-  ...httpInterceptorProviders
+  ...httpInterceptorProviders,
+  {
+    provide: UrlSerializer,
+    useClass: LowerCaseUrlSerializer
+} 
   ],
   bootstrap: [AppComponent]
 })
