@@ -378,3 +378,202 @@ INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCountie
 GO
 SET IDENTITY_INSERT [dbo].[AssVAClientsCounties] OFF
 GO
+
+
+SET IDENTITY_INSERT [dbo].[ACTPL] ON 
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (17, 1, 987.0000, 160.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (18, 1, 987.0000, 200.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (19, 1, 987.0000, 827.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (20, 1, 987.0000, 192.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (21, 1, 987.0000, 658.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (22, 1, 987.0000, 712.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (23, 1, 987.0000, 665.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (24, 1, 987.0000, 781.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (25, 1, 750.0000, 137.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (26, 1, 750.0000, 244.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (27, 1, 750.0000, 231.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (28, 1, 750.0000, 749.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (29, 1, 750.0000, 307.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (30, 1, 750.0000, 402.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (31, 1, 750.0000, 590.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (32, 1, 750.0000, 241.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (33, 2, 750.0000, 633.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (34, 2, 750.0000, 856.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (35, 2, 750.0000, 174.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (36, 2, 750.0000, 687.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (37, 2, 750.0000, 237.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (38, 2, 750.0000, 935.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (39, 2, 750.0000, 830.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (40, 2, 750.0000, 694.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (41, 3, 750.0000, 424.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (42, 3, 750.0000, 344.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (43, 3, 750.0000, 663.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (44, 3, 750.0000, 490.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (45, 3, 750.0000, 382.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (46, 3, 750.0000, 862.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (47, 3, 750.0000, 188.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (48, 3, 750.0000, 105.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (49, 4, 750.0000, 107.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (50, 4, 750.0000, 637.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (51, 4, 750.0000, 639.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (52, 4, 750.0000, 928.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (53, 4, 750.0000, 993.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (54, 4, 750.0000, 831.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (55, 4, 750.0000, 833.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (56, 4, 750.0000, 256.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (57, 5, 750.0000, 840.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (58, 5, 750.0000, 339.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (59, 5, 750.0000, 100.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (60, 5, 750.0000, 464.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (61, 5, 750.0000, 521.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (62, 5, 750.0000, 949.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (63, 5, 750.0000, 357.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (64, 5, 750.0000, 229.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (65, 6, 750.0000, 651.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (66, 6, 750.0000, 531.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (67, 6, 750.0000, 777.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (68, 6, 750.0000, 281.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (69, 6, 750.0000, 783.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (70, 6, 750.0000, 786.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (71, 6, 750.0000, 248.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (72, 6, 750.0000, 968.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (73, 7, 750.0000, 805.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (74, 7, 750.0000, 850.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (75, 7, 750.0000, 353.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (76, 7, 750.0000, 570.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (77, 7, 750.0000, 743.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (78, 7, 750.0000, 578.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (79, 7, 750.0000, 744.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (80, 7, 750.0000, 499.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (81, 8, 750.0000, 471.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (82, 8, 750.0000, 332.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (83, 8, 750.0000, 597.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (84, 8, 750.0000, 459.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (85, 8, 750.0000, 886.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (86, 8, 750.0000, 339.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (87, 8, 750.0000, 719.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (88, 8, 750.0000, 779.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (89, 9, 750.0000, 414.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (90, 9, 750.0000, 287.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (91, 9, 750.0000, 186.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (92, 9, 750.0000, 936.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (93, 9, 750.0000, 976.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (94, 9, 750.0000, 845.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (95, 9, 750.0000, 201.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (96, 9, 750.0000, 257.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (97, 10, 750.0000, 525.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (98, 10, 750.0000, 634.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (99, 10, 750.0000, 460.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (100, 10, 750.0000, 812.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (101, 10, 750.0000, 698.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (102, 10, 750.0000, 619.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (103, 10, 750.0000, 322.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (104, 10, 750.0000, 534.0000, 8, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (105, 11, 750.0000, 643.0000, 1, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (106, 11, 750.0000, 1000.0000, 2, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (107, 11, 750.0000, 641.0000, 3, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (108, 11, 750.0000, 896.0000, 4, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (109, 11, 750.0000, 613.0000, 5, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (110, 11, 750.0000, 358.0000, 6, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (111, 11, 750.0000, 269.0000, 7, 2020)
+GO
+INSERT [dbo].[ACTPL] ([IDACTPL], [IDAssVAClientsCounties], [Actual], [Plan], [Month], [Year]) VALUES (112, 11, 750.0000, 854.0000, 8, 2020)
+GO
+SET IDENTITY_INSERT [dbo].[ACTPL] OFF
+GO
+
