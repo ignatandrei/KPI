@@ -1,0 +1,66 @@
+
+<div *ngIf="dataToEdit == null">Loading data for {{id}} ...</div>
+<div *ngIf="dataToEdit != null">
+	Edit 
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>IDClient</td>
+	<td>
+		<input type="text" disabled='disabled'  [(ngModel)]="dataToEdit.idclient" />
+	
+	
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>NameClient</td>
+	<td>
+		<input type="text"   [(ngModel)]="dataToEdit.nameclient" />
+	
+	
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>ShortNameClient</td>
+	<td>
+		<input type="text"   [(ngModel)]="dataToEdit.shortnameclient" />
+	
+	
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+
+			  <tr>
+				<td align="left">
+				  <button (click)="save()">Save</button>
+				</td>
+				<td align="left">
+				  <button (click)="cancel()">Back to list of dbo.Clients</button>
+				</td>
+			  </tr>
+						
+</table>
+</div>

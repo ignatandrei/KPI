@@ -1,0 +1,79 @@
+
+
+<br />
+<h1>
+List of dbo.ACTPL 
+</h1>
+
+<mat-form-field>
+	<mat-label>Filter</mat-label>
+	<input matInput (keyup)="applyFilter($event)" placeholder="filter text" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+	<table mat-table [dataSource]="dataSource" matSort>
+		<ng-container matColumnDef="rowIndex">
+			<th mat-header-cell *matHeaderCellDef> Index </th>
+			<td mat-cell *matCellDef="let row;index as i;"> {{ i+1   + (paginator.pageIndex * paginator.pageSize) }} </td>
+		</ng-container>
+	
+
+
+	  <ng-container matColumnDef="actual">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Actual </th>
+		<td mat-cell *matCellDef="let row"> {{row.actual}} </td>
+	  </ng-container>
+		  
+
+	  <ng-container matColumnDef="idactpl">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> IDACTPL </th>
+		<td mat-cell *matCellDef="let row"> {{row.idactpl}} </td>
+	  </ng-container>
+		  
+
+	  <ng-container matColumnDef="idassvaclientscounties">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> IDAssVAClientsCounties </th>
+		<td mat-cell *matCellDef="let row"> {{row.idassvaclientscounties}}<a mat-list-item [routerLink]="['/dboassvaclientscounties/edit', row.idassvaclientscounties]" routerLinkActive="active">Go=></a> </td>
+	  </ng-container>
+		  
+
+	  <ng-container matColumnDef="month">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Month </th>
+		<td mat-cell *matCellDef="let row"> {{row.month}} </td>
+	  </ng-container>
+		  
+
+	  <ng-container matColumnDef="plan">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Plan </th>
+		<td mat-cell *matCellDef="let row"> {{row.plan}} </td>
+	  </ng-container>
+		  
+
+	  <ng-container matColumnDef="year">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Year </th>
+		<td mat-cell *matCellDef="let row"> {{row.year}} </td>
+	  </ng-container>
+		  
+	  <ng-container matColumnDef="operations">
+		<th mat-header-cell *matHeaderCellDef mat-sort-header> Operations </th>
+		<td mat-cell *matCellDef="let row" > <a routerLink="/dboactpl/edit/{{row.idactpl}}" >Edit</a>
+		
+			&nbsp;
+			<button (click)="deleteData(row.idactpl)">Delete</button>
+			
+		</td>
+	  </ng-container>
+			  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	  <tr mat-row *matRowDef="let row;let index = renderIndex; columns: displayedColumns;"></tr>
+  
+	  <!-- Row shown when there is no matching data. -->
+	  <tr class="mat-row" *matNoDataRow>
+		<td class="mat-cell" colspan="4">No data in dbo.ACTPL matching the filter "{{input.value}}"</td>
+	  </tr>
+	</table>
+  
+	<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+  <button (click)="add()">Add new dbo.ACTPL</button>
+			

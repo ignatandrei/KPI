@@ -7,7 +7,9 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "./src/app/WebAPIClasses/KPI11Data.ts",
+    "./src/app/WebAPIClasses/SearchKPI11.ts"
   ],
   "include": [
     "src/**/*.d.ts"

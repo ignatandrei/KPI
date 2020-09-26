@@ -1,0 +1,82 @@
+
+Add  new dbo.ClientsCounties
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>IDClient</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idclient" />
+
+					<mat-form-field appearance="fill">
+						<mat-select  [(ngModel)]="dataToAdd.idclient" >
+							
+							<mat-option *ngFor="let item of dboClientsAll" [value]="item.idclient">
+							  {{item | json}}
+							</mat-option>
+						  </mat-select>
+						</mat-form-field>
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDClientsCounties</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idclientscounties" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDCounty</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idcounty" />
+
+					<mat-form-field appearance="fill">
+						<mat-select  [(ngModel)]="dataToAdd.idcounty" >
+							
+							<mat-option *ngFor="let item of dboCountyAll" [value]="item.idcounty">
+							  {{item | json}}
+							</mat-option>
+						  </mat-select>
+						</mat-form-field>
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+
+			  <tr>
+				 
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+											
+
+				<td align="left">
+				  <button (click)="cancel()">Back to list of dbo.ClientsCounties</button>
+				</td>
+			  </tr>
+			
+			
+</table>

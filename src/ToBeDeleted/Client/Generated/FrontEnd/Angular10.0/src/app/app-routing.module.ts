@@ -6,107 +6,236 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
-import { ClientComponent } from './WebAPIComponents/Client.component';
+import { dboACTPLComponent } from './WebAPIComponents/dboACTPL.component';
 
-import { ClientAddComponent } from './WebAPIComponents/Clientadd.component';
+import { dboACTPLAddComponent } from './WebAPIComponents/dboACTPLadd.component';
 
-import { ClientEditComponent } from './WebAPIComponents/Clientedit.component';
-
-
-import { CifreAnualeComponent } from './WebAPIComponents/CifreAnuale.component';
-
-import { CifreAnualeAddComponent } from './WebAPIComponents/CifreAnualeadd.component';
-
-import { CifreAnualeEditComponent } from './WebAPIComponents/CifreAnualeedit.component';
-
-import { SalesRepComponent } from './WebAPIComponents/SalesRep.component';
-
-import { SalesRepAddComponent } from './WebAPIComponents/SalesRepadd.component';
-
-import { SalesRepEditComponent } from './WebAPIComponents/SalesRepedit.component';
+import { dboACTPLEditComponent } from './WebAPIComponents/dboACTPLedit.component';
 
 
-import { SRCkientiComponent } from './WebAPIComponents/SRCkienti.component';
+import { dboAssVAComponent } from './WebAPIComponents/dboAssVA.component';
 
-import { SRCkientiAddComponent } from './WebAPIComponents/SRCkientiadd.component';
+import { dboAssVAAddComponent } from './WebAPIComponents/dboAssVAadd.component';
 
-import { SRCkientiEditComponent } from './WebAPIComponents/SRCkientiedit.component';
-
-
-import { TargetSRComponent } from './WebAPIComponents/TargetSR.component';
-
-import { TargetSRAddComponent } from './WebAPIComponents/TargetSRadd.component';
-
-import { TargetSREditComponent } from './WebAPIComponents/TargetSRedit.component';
+import { dboAssVAEditComponent } from './WebAPIComponents/dboAssVAedit.component';
 
 
-import { ValueSRComponent } from './WebAPIComponents/ValueSR.component';
+import { dboAssVAClientsCountiesComponent } from './WebAPIComponents/dboAssVAClientsCounties.component';
 
-import { ValueSRAddComponent } from './WebAPIComponents/ValueSRadd.component';
+import { dboAssVAClientsCountiesAddComponent } from './WebAPIComponents/dboAssVAClientsCountiesadd.component';
 
-import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
+import { dboAssVAClientsCountiesEditComponent } from './WebAPIComponents/dboAssVAClientsCountiesedit.component';
 
-import { NNDvsUnivComponent} from './WebAPIComponents/NNDvsUniv.component';
-import { KPIComponent} from './kpi/kpi.component'
-import { NNDvsUnivAddComponent } from './WebAPIComponents/NNDvsUnivadd.component';
-import { NNDvsUnivEditComponent } from './WebAPIComponents/NNDvsUnivedit.component';
+
+import { dboCategoryComponent } from './WebAPIComponents/dboCategory.component';
+
+import { dboCategoryAddComponent } from './WebAPIComponents/dboCategoryadd.component';
+
+import { dboCategoryEditComponent } from './WebAPIComponents/dboCategoryedit.component';
+
+
+import { dboClientsComponent } from './WebAPIComponents/dboClients.component';
+
+import { dboClientsAddComponent } from './WebAPIComponents/dboClientsadd.component';
+
+import { dboClientsEditComponent } from './WebAPIComponents/dboClientsedit.component';
+
+
+import { dboClientsCategoryComponent } from './WebAPIComponents/dboClientsCategory.component';
+
+import { dboClientsCategoryAddComponent } from './WebAPIComponents/dboClientsCategoryadd.component';
+
+import { dboClientsCategoryEditComponent } from './WebAPIComponents/dboClientsCategoryedit.component';
+
+
+import { dboClientsCountiesComponent } from './WebAPIComponents/dboClientsCounties.component';
+
+import { dboClientsCountiesAddComponent } from './WebAPIComponents/dboClientsCountiesadd.component';
+
+import { dboClientsCountiesEditComponent } from './WebAPIComponents/dboClientsCountiesedit.component';
+
+
+import { dboCountryComponent } from './WebAPIComponents/dboCountry.component';
+
+import { dboCountryAddComponent } from './WebAPIComponents/dboCountryadd.component';
+
+import { dboCountryEditComponent } from './WebAPIComponents/dboCountryedit.component';
+
+
+import { dboCountyComponent } from './WebAPIComponents/dboCounty.component';
+
+import { dboCountyAddComponent } from './WebAPIComponents/dboCountyadd.component';
+
+import { dboCountyEditComponent } from './WebAPIComponents/dboCountyedit.component';
+
+
+import { dboKPI11Component } from './WebAPIComponents/dboKPI11.component';
+
+import { dboKPI11AddComponent } from './WebAPIComponents/dboKPI11add.component';
+
+import { dboKPI11EditComponent } from './WebAPIComponents/dboKPI11edit.component';
+
+
+import { dbovwACTPL_Ass_ClientsComponent } from './WebAPIComponents/dbovwACTPL_Ass_Clients.component';
+
+import { dbovwACTPL_Ass_ClientsAddComponent } from './WebAPIComponents/dbovwACTPL_Ass_Clientsadd.component';
+
+import { dbovwACTPL_Ass_ClientsEditComponent } from './WebAPIComponents/dbovwACTPL_Ass_Clientsedit.component';
+
+
+import { dbovwAssClientsComponent } from './WebAPIComponents/dbovwAssClients.component';
+
+import { dbovwAssClientsAddComponent } from './WebAPIComponents/dbovwAssClientsadd.component';
+
+import { dbovwAssClientsEditComponent } from './WebAPIComponents/dbovwAssClientsedit.component';
+
+
+import { dbovwAssManagerComponent } from './WebAPIComponents/dbovwAssManager.component';
+
+import { dbovwAssManagerAddComponent } from './WebAPIComponents/dbovwAssManageradd.component';
+
+import { dbovwAssManagerEditComponent } from './WebAPIComponents/dbovwAssManageredit.component';
+
+
+import { dbovwClientsBaseComponent } from './WebAPIComponents/dbovwClientsBase.component';
+
+import { dbovwClientsBaseAddComponent } from './WebAPIComponents/dbovwClientsBaseadd.component';
+
+import { dbovwClientsBaseEditComponent } from './WebAPIComponents/dbovwClientsBaseedit.component';
+
+
+import { dbovwClientsCountryCategoryComponent } from './WebAPIComponents/dbovwClientsCountryCategory.component';
+
+import { dbovwClientsCountryCategoryAddComponent } from './WebAPIComponents/dbovwClientsCountryCategoryadd.component';
+
+import { dbovwClientsCountryCategoryEditComponent } from './WebAPIComponents/dbovwClientsCountryCategoryedit.component';
+
+
+import { dbovwCountyComponent } from './WebAPIComponents/dbovwCounty.component';
+
+import { dbovwCountyAddComponent } from './WebAPIComponents/dbovwCountyadd.component';
+
+import { dbovwCountyEditComponent } from './WebAPIComponents/dbovwCountyedit.component';
+
+
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
-  {path: 'kpi5data', component: NNDvsUnivComponent},
+{ path: 'dboactpl', component: dboACTPLComponent },
 
-  { path: 'nndvsuniv', component: NNDvsUnivComponent },
+{ path: 'dboactpl/add', component: dboACTPLAddComponent },
 
-  { path: 'nndvsuniv/add', component: NNDvsUnivAddComponent },
+{ path: 'dboactpl/edit/:id', component: dboACTPLEditComponent },
+
+
+{ path: 'dboassva', component: dboAssVAComponent },
+
+{ path: 'dboassva/add', component: dboAssVAAddComponent },
+
+{ path: 'dboassva/edit/:id', component: dboAssVAEditComponent },
+
+
+{ path: 'dboassvaclientscounties', component: dboAssVAClientsCountiesComponent },
+
+{ path: 'dboassvaclientscounties/add', component: dboAssVAClientsCountiesAddComponent },
+
+{ path: 'dboassvaclientscounties/edit/:id', component: dboAssVAClientsCountiesEditComponent },
+
+
+{ path: 'dbocategory', component: dboCategoryComponent },
+
+{ path: 'dbocategory/add', component: dboCategoryAddComponent },
+
+{ path: 'dbocategory/edit/:id', component: dboCategoryEditComponent },
+
+
+{ path: 'dboclients', component: dboClientsComponent },
+
+{ path: 'dboclients/add', component: dboClientsAddComponent },
+
+{ path: 'dboclients/edit/:id', component: dboClientsEditComponent },
+
+
+{ path: 'dboclientscategory', component: dboClientsCategoryComponent },
+
+{ path: 'dboclientscategory/add', component: dboClientsCategoryAddComponent },
+
+{ path: 'dboclientscategory/edit/:id', component: dboClientsCategoryEditComponent },
+
+
+{ path: 'dboclientscounties', component: dboClientsCountiesComponent },
+
+{ path: 'dboclientscounties/add', component: dboClientsCountiesAddComponent },
+
+{ path: 'dboclientscounties/edit/:id', component: dboClientsCountiesEditComponent },
+
+
+{ path: 'dbocountry', component: dboCountryComponent },
+
+{ path: 'dbocountry/add', component: dboCountryAddComponent },
+
+{ path: 'dbocountry/edit/:id', component: dboCountryEditComponent },
+
+
+{ path: 'dbocounty', component: dboCountyComponent },
+
+{ path: 'dbocounty/add', component: dboCountyAddComponent },
+
+{ path: 'dbocounty/edit/:id', component: dboCountyEditComponent },
+
+
+{ path: 'dbokpi11', component: dboKPI11Component },
+
+{ path: 'dbokpi11/add', component: dboKPI11AddComponent },
+
+{ path: 'dbokpi11/edit/:id', component: dboKPI11EditComponent },
+
+
+{ path: 'dbovwactpl_ass_clients', component: dbovwACTPL_Ass_ClientsComponent },
+
+{ path: 'dbovwactpl_ass_clients/add', component: dbovwACTPL_Ass_ClientsAddComponent },
+
+{ path: 'dbovwactpl_ass_clients/edit/:id', component: dbovwACTPL_Ass_ClientsEditComponent },
+
+
+{ path: 'dbovwassclients', component: dbovwAssClientsComponent },
+
+{ path: 'dbovwassclients/add', component: dbovwAssClientsAddComponent },
+
+{ path: 'dbovwassclients/edit/:id', component: dbovwAssClientsEditComponent },
+
+
+{ path: 'dbovwassmanager', component: dbovwAssManagerComponent },
+
+{ path: 'dbovwassmanager/add', component: dbovwAssManagerAddComponent },
+
+{ path: 'dbovwassmanager/edit/:id', component: dbovwAssManagerEditComponent },
+
+
+{ path: 'dbovwclientsbase', component: dbovwClientsBaseComponent },
+
+{ path: 'dbovwclientsbase/add', component: dbovwClientsBaseAddComponent },
+
+{ path: 'dbovwclientsbase/edit/:id', component: dbovwClientsBaseEditComponent },
+
+
+{ path: 'dbovwclientscountrycategory', component: dbovwClientsCountryCategoryComponent },
+
+{ path: 'dbovwclientscountrycategory/add', component: dbovwClientsCountryCategoryAddComponent },
+
+{ path: 'dbovwclientscountrycategory/edit/:id', component: dbovwClientsCountryCategoryEditComponent },
+
+
+{ path: 'dbovwcounty', component: dbovwCountyComponent },
+
+{ path: 'dbovwcounty/add', component: dbovwCountyAddComponent },
+
+{ path: 'dbovwcounty/edit/:id', component: dbovwCountyEditComponent },
+
   
-  { path: 'nndvsuniv/edit/:id', component: NNDvsUnivEditComponent },
-  
-
-  { path: 'kpi5graph', component:  KPIComponent },
-
-{ path: 'client', component: ClientComponent },
-
-{ path: 'client/add', component: ClientAddComponent },
-
-{ path: 'client/edit/:id', component: ClientEditComponent },
-
-
-{ path: 'cifreanuale', component: CifreAnualeComponent },
-
-{ path: 'cifreanuale/add', component: CifreAnualeAddComponent },
-
-{ path: 'cifreanuale/edit/:id', component: CifreAnualeEditComponent },
-
-{ path: 'salesrep', component: SalesRepComponent },
-
-{ path: 'salesrep/add', component: SalesRepAddComponent },
-
-{ path: 'salesrep/edit/:id', component: SalesRepEditComponent },
-
-
-{ path: 'srckienti', component: SRCkientiComponent },
-
-{ path: 'srckienti/add', component: SRCkientiAddComponent },
-
-{ path: 'srckienti/edit/:id', component: SRCkientiEditComponent },
-
-{ path: 'targetsr', component: TargetSRComponent },
-
-{ path: 'targetsr/add', component: TargetSRAddComponent },
-
-{ path: 'targetsr/edit/:id', component: TargetSREditComponent },
-
-
-{ path: 'valuesr', component: ValueSRComponent },
-
-{ path: 'valuesr/add', component: ValueSRAddComponent },
-
-{ path: 'valuesr/edit/:id', component: ValueSREditComponent },
-
-
 
 ];
 

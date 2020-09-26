@@ -9,11 +9,41 @@
     [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar>Menu</mat-toolbar>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            CLICK 
+          </mat-panel-title>
+          <mat-panel-description>
+            CRUD
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
     <mat-nav-list>
-      <a mat-list-item routerLink="/kpi5data" routerLinkActive="active">KPI 5 Data</a>
-      <a mat-list-item routerLink="/kpi5graph" routerLinkActive="active">KPI5</a>
-
+      <a mat-list-item routerLink="/dboactpl" routerLinkActive="active">dbo.ACTPL </a>
+      <a mat-list-item routerLink="/dboassva" routerLinkActive="active">dbo.AssVA </a>
+      <a mat-list-item routerLink="/dboassvaclientscounties" routerLinkActive="active">dbo.AssVAClientsCounties </a>
+      <a mat-list-item routerLink="/dbocategory" routerLinkActive="active">dbo.Category </a>
+      <a mat-list-item routerLink="/dboclients" routerLinkActive="active">dbo.Clients </a>
+      <a mat-list-item routerLink="/dboclientscategory" routerLinkActive="active">dbo.ClientsCategory </a>
+      <a mat-list-item routerLink="/dboclientscounties" routerLinkActive="active">dbo.ClientsCounties </a>
+      <a mat-list-item routerLink="/dbocountry" routerLinkActive="active">dbo.Country </a>
+      <a mat-list-item routerLink="/dbocounty" routerLinkActive="active">dbo.County </a>
+      <a mat-list-item routerLink="/dbokpi11" routerLinkActive="active">dbo.KPI11 </a>
+      <a mat-list-item routerLink="/dbovwactpl_ass_clients" routerLinkActive="active">dbo.vwACTPL_Ass_Clients </a>
+      <a mat-list-item routerLink="/dbovwassclients" routerLinkActive="active">dbo.vwAssClients </a>
+      <a mat-list-item routerLink="/dbovwassmanager" routerLinkActive="active">dbo.vwAssManager </a>
+      <a mat-list-item routerLink="/dbovwclientsbase" routerLinkActive="active">dbo.vwClientsBase </a>
+      <a mat-list-item routerLink="/dbovwclientscountrycategory" routerLinkActive="active">dbo.vwClientsCountryCategory </a>
+      <a mat-list-item routerLink="/dbovwcounty" routerLinkActive="active">dbo.vwCounty </a>
+      
+      <a mat-list-item routerLink="/about" routerLinkActive="active">About</a>
+      
     </mat-nav-list>
+  </mat-expansion-panel>
+</mat-accordion>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -26,17 +56,17 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      
-      <span>
-        <a routerLink="/">My KPI analysis</a>  
-
-      </span> 
+      <a routerLink='/' >
+        <span>KPI</span> 
+      </a>
     </mat-toolbar>
     <mat-spinner *ngIf="isLoading"></mat-spinner>    
     <router-outlet></router-outlet>
 	<footer>
 	<small>
-		<p>Trillion KPI</p>
+		<p>
+      KPI generator
+    </p>
 	</small>
 	</footer>
   </mat-sidenav-content>

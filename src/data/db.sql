@@ -1,5 +1,3 @@
-USE tests
-GO
 ALTER TABLE [dbo].[County] DROP CONSTRAINT [FK_County_Country]
 GO
 ALTER TABLE [dbo].[ClientsCounties] DROP CONSTRAINT [FK_ClientsCounties_County]
@@ -297,7 +295,7 @@ INSERT [dbo].[ClientsCategory] ([ID], [IDClient], [IDCategory]) VALUES (7, 7, 2)
 GO
 SET IDENTITY_INSERT [dbo].[ClientsCategory] OFF
 GO
-USE [tests]
+
 GO
 SET IDENTITY_INSERT [dbo].[AssVA] ON 
 GO

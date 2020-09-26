@@ -1,9 +1,136 @@
 
 <br />
-<h1> KPI</h1>
+
+<a mat-list-item routerLink="/dbokpi11" routerLinkActive="active">KP11 - Actual vs Plan YTD </a>
+    
+<br />
 
 
-      <a mat-list-item routerLink="/kpi5graph" routerLinkActive="active">KPI5</a>
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          CLICK 
+        </mat-panel-title>
+        <mat-panel-description>
+          CRUD
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+  
+      <a mat-list-item routerLink="/dboactpl" routerLinkActive="active">dbo.ACTPL </a>
+      <span *ngIf="numberRecordsdboactpl != null">
 
-      <br />
+        number records:
+       {{numberRecordsdboactpl}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dboassva" routerLinkActive="active">dbo.AssVA </a>
+      <span *ngIf="numberRecordsdboassva != null">
+
+        number records:
+       {{numberRecordsdboassva}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dboassvaclientscounties" routerLinkActive="active">dbo.AssVAClientsCounties </a>
+      <span *ngIf="numberRecordsdboassvaclientscounties != null">
+
+        number records:
+       {{numberRecordsdboassvaclientscounties}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbocategory" routerLinkActive="active">dbo.Category </a>
+      <span *ngIf="numberRecordsdbocategory != null">
+
+        number records:
+       {{numberRecordsdbocategory}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dboclients" routerLinkActive="active">dbo.Clients </a>
+      <span *ngIf="numberRecordsdboclients != null">
+
+        number records:
+       {{numberRecordsdboclients}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dboclientscategory" routerLinkActive="active">dbo.ClientsCategory </a>
+      <span *ngIf="numberRecordsdboclientscategory != null">
+
+        number records:
+       {{numberRecordsdboclientscategory}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dboclientscounties" routerLinkActive="active">dbo.ClientsCounties </a>
+      <span *ngIf="numberRecordsdboclientscounties != null">
+
+        number records:
+       {{numberRecordsdboclientscounties}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbocountry" routerLinkActive="active">dbo.Country </a>
+      <span *ngIf="numberRecordsdbocountry != null">
+
+        number records:
+       {{numberRecordsdbocountry}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbocounty" routerLinkActive="active">dbo.County </a>
+      <span *ngIf="numberRecordsdbocounty != null">
+
+        number records:
+       {{numberRecordsdbocounty}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbokpi11" routerLinkActive="active">dbo.KPI11 </a>
+      <span *ngIf="numberRecordsdbokpi11 != null">
+
+        number records:
+       {{numberRecordsdbokpi11}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbovwactpl_ass_clients" routerLinkActive="active">dbo.vwACTPL_Ass_Clients </a>
+      <span *ngIf="numberRecordsdbovwactpl_ass_clients != null">
+
+        number records:
+       {{numberRecordsdbovwactpl_ass_clients}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbovwassclients" routerLinkActive="active">dbo.vwAssClients </a>
+      <span *ngIf="numberRecordsdbovwassclients != null">
+
+        number records:
+       {{numberRecordsdbovwassclients}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbovwassmanager" routerLinkActive="active">dbo.vwAssManager </a>
+      <span *ngIf="numberRecordsdbovwassmanager != null">
+
+        number records:
+       {{numberRecordsdbovwassmanager}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbovwclientsbase" routerLinkActive="active">dbo.vwClientsBase </a>
+      <span *ngIf="numberRecordsdbovwclientsbase != null">
+
+        number records:
+       {{numberRecordsdbovwclientsbase}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbovwclientscountrycategory" routerLinkActive="active">dbo.vwClientsCountryCategory </a>
+      <span *ngIf="numberRecordsdbovwclientscountrycategory != null">
+
+        number records:
+       {{numberRecordsdbovwclientscountrycategory}}
+       </span>
+	  <br />
+      <a mat-list-item routerLink="/dbovwcounty" routerLinkActive="active">dbo.vwCounty </a>
+      <span *ngIf="numberRecordsdbovwcounty != null">
+
+        number records:
+       {{numberRecordsdbovwcounty}}
+       </span>
+	  <br />
       
+
+    </mat-expansion-panel>
+</mat-accordion>

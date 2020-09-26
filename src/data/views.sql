@@ -1,5 +1,3 @@
-USE [tests]
-GO
 /****** Object:  View [dbo].[vwCounty]    Script Date: 9/26/2020 9:54:46 AM ******/
 DROP VIEW [dbo].[vwCounty]
 GO

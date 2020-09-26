@@ -1,0 +1,107 @@
+
+Add  new dbo.ACTPL
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>Actual</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.actual" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDACTPL</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idactpl" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDAssVAClientsCounties</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idassvaclientscounties" />
+
+					<mat-form-field appearance="fill">
+						<mat-select  [(ngModel)]="dataToAdd.idassvaclientscounties" >
+							
+							<mat-option *ngFor="let item of dboAssVAClientsCountiesAll" [value]="item.idassvaclientscounties">
+							  {{item | json}}
+							</mat-option>
+						  </mat-select>
+						</mat-form-field>
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>Month</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.month" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>Plan</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.plan" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>Year</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.year" />
+
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+
+			  <tr>
+				 
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+											
+
+				<td align="left">
+				  <button (click)="cancel()">Back to list of dbo.ACTPL</button>
+				</td>
+			  </tr>
+			
+			
+</table>

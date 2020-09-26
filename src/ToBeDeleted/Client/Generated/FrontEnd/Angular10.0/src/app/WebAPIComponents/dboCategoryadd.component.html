@@ -1,0 +1,66 @@
+
+Add  new dbo.Category
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>IDCategory</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idcategory" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>NameCategory</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.namecategory" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>ShortNameCategory</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.shortnamecategory" />
+
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+
+			  <tr>
+				 
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+											
+
+				<td align="left">
+				  <button (click)="cancel()">Back to list of dbo.Category</button>
+				</td>
+			  </tr>
+			
+			
+</table>

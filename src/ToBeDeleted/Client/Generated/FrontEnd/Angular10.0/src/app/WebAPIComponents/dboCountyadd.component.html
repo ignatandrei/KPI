@@ -1,0 +1,85 @@
+
+Add  new dbo.County
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>IDCountry</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idcountry" />
+
+					<mat-form-field appearance="fill">
+						<mat-select  [(ngModel)]="dataToAdd.idcountry" >
+							
+							<mat-option *ngFor="let item of dboCountryAll" [value]="item.idcountry">
+							  {{item | json}}
+							</mat-option>
+						  </mat-select>
+						</mat-form-field>
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDCounty</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idcounty" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>NameCounty</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.namecounty" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>ShortNameCounty</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.shortnamecounty" />
+
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+
+			  <tr>
+				 
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+											
+
+				<td align="left">
+				  <button (click)="cancel()">Back to list of dbo.County</button>
+				</td>
+			  </tr>
+			
+			
+</table>

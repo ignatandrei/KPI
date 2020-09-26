@@ -1,6 +1,7 @@
 
+import { UrlSerializer } from '@angular/router';
 
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -56,95 +57,193 @@ import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './interceptors/barrelInterceptors';
-
-
-import { ClientComponent } from './WebAPIComponents/Client.component';
-
-import { ClientAddComponent } from './WebAPIComponents/Clientadd.component';
-
-import { ClientEditComponent } from './WebAPIComponents/Clientedit.component';
-
-
-import { CifreAnualeComponent } from './WebAPIComponents/CifreAnuale.component';
-
-import { CifreAnualeAddComponent } from './WebAPIComponents/CifreAnualeadd.component';
-
-import { CifreAnualeEditComponent } from './WebAPIComponents/CifreAnualeedit.component';
-
-import { SalesRepComponent } from './WebAPIComponents/SalesRep.component';
-
-import { SalesRepAddComponent } from './WebAPIComponents/SalesRepadd.component';
-
-import { SalesRepEditComponent } from './WebAPIComponents/SalesRepedit.component';
-
-
-import { SRCkientiComponent } from './WebAPIComponents/SRCkienti.component';
-
-import { SRCkientiAddComponent } from './WebAPIComponents/SRCkientiadd.component';
-
-import { SRCkientiEditComponent } from './WebAPIComponents/SRCkientiedit.component';
-
-import { TargetSRComponent } from './WebAPIComponents/TargetSR.component';
-
-import { TargetSRAddComponent } from './WebAPIComponents/TargetSRadd.component';
-
-import { TargetSREditComponent } from './WebAPIComponents/TargetSRedit.component';
-
-
-import { ValueSRComponent } from './WebAPIComponents/ValueSR.component';
-
-import { ValueSRAddComponent } from './WebAPIComponents/ValueSRadd.component';
-
-import { ValueSREditComponent } from './WebAPIComponents/ValueSRedit.component';
-import { KPIComponent } from './kpi/kpi.component';
-
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NNDvsUnivComponent } from './WebAPIComponents/NNDvsUniv.component';
-import {NNDvsUnivAddComponent} from './WebAPIComponents/NNDvsUnivadd.component';
-import {NNDvsUnivEditComponent} from'./WebAPIComponents/NNDvsUnivedit.component';
-import { UrlSerializer } from '@angular/router';
 import { LowerCaseUrlSerializer } from './routeHelper/lowercase';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+
+import { dboACTPLComponent } from './WebAPIComponents/dboACTPL.component';
+
+import { dboACTPLAddComponent } from './WebAPIComponents/dboACTPLadd.component';
+
+import { dboACTPLEditComponent } from './WebAPIComponents/dboACTPLedit.component';
+
+
+import { dboAssVAComponent } from './WebAPIComponents/dboAssVA.component';
+
+import { dboAssVAAddComponent } from './WebAPIComponents/dboAssVAadd.component';
+
+import { dboAssVAEditComponent } from './WebAPIComponents/dboAssVAedit.component';
+
+
+import { dboAssVAClientsCountiesComponent } from './WebAPIComponents/dboAssVAClientsCounties.component';
+
+import { dboAssVAClientsCountiesAddComponent } from './WebAPIComponents/dboAssVAClientsCountiesadd.component';
+
+import { dboAssVAClientsCountiesEditComponent } from './WebAPIComponents/dboAssVAClientsCountiesedit.component';
+
+
+import { dboCategoryComponent } from './WebAPIComponents/dboCategory.component';
+
+import { dboCategoryAddComponent } from './WebAPIComponents/dboCategoryadd.component';
+
+import { dboCategoryEditComponent } from './WebAPIComponents/dboCategoryedit.component';
+
+
+import { dboClientsComponent } from './WebAPIComponents/dboClients.component';
+
+import { dboClientsAddComponent } from './WebAPIComponents/dboClientsadd.component';
+
+import { dboClientsEditComponent } from './WebAPIComponents/dboClientsedit.component';
+
+
+import { dboClientsCategoryComponent } from './WebAPIComponents/dboClientsCategory.component';
+
+import { dboClientsCategoryAddComponent } from './WebAPIComponents/dboClientsCategoryadd.component';
+
+import { dboClientsCategoryEditComponent } from './WebAPIComponents/dboClientsCategoryedit.component';
+
+
+import { dboClientsCountiesComponent } from './WebAPIComponents/dboClientsCounties.component';
+
+import { dboClientsCountiesAddComponent } from './WebAPIComponents/dboClientsCountiesadd.component';
+
+import { dboClientsCountiesEditComponent } from './WebAPIComponents/dboClientsCountiesedit.component';
+
+
+import { dboCountryComponent } from './WebAPIComponents/dboCountry.component';
+
+import { dboCountryAddComponent } from './WebAPIComponents/dboCountryadd.component';
+
+import { dboCountryEditComponent } from './WebAPIComponents/dboCountryedit.component';
+
+
+import { dboCountyComponent } from './WebAPIComponents/dboCounty.component';
+
+import { dboCountyAddComponent } from './WebAPIComponents/dboCountyadd.component';
+
+import { dboCountyEditComponent } from './WebAPIComponents/dboCountyedit.component';
+
+
+import { dboKPI11Component } from './WebAPIComponents/dboKPI11.component';
+
+import { dboKPI11AddComponent } from './WebAPIComponents/dboKPI11add.component';
+
+import { dboKPI11EditComponent } from './WebAPIComponents/dboKPI11edit.component';
+
+
+import { dbovwACTPL_Ass_ClientsComponent } from './WebAPIComponents/dbovwACTPL_Ass_Clients.component';
+
+import { dbovwACTPL_Ass_ClientsAddComponent } from './WebAPIComponents/dbovwACTPL_Ass_Clientsadd.component';
+
+import { dbovwACTPL_Ass_ClientsEditComponent } from './WebAPIComponents/dbovwACTPL_Ass_Clientsedit.component';
+
+
+import { dbovwAssClientsComponent } from './WebAPIComponents/dbovwAssClients.component';
+
+import { dbovwAssClientsAddComponent } from './WebAPIComponents/dbovwAssClientsadd.component';
+
+import { dbovwAssClientsEditComponent } from './WebAPIComponents/dbovwAssClientsedit.component';
+
+
+import { dbovwAssManagerComponent } from './WebAPIComponents/dbovwAssManager.component';
+
+import { dbovwAssManagerAddComponent } from './WebAPIComponents/dbovwAssManageradd.component';
+
+import { dbovwAssManagerEditComponent } from './WebAPIComponents/dbovwAssManageredit.component';
+
+
+import { dbovwClientsBaseComponent } from './WebAPIComponents/dbovwClientsBase.component';
+
+import { dbovwClientsBaseAddComponent } from './WebAPIComponents/dbovwClientsBaseadd.component';
+
+import { dbovwClientsBaseEditComponent } from './WebAPIComponents/dbovwClientsBaseedit.component';
+
+
+import { dbovwClientsCountryCategoryComponent } from './WebAPIComponents/dbovwClientsCountryCategory.component';
+
+import { dbovwClientsCountryCategoryAddComponent } from './WebAPIComponents/dbovwClientsCountryCategoryadd.component';
+
+import { dbovwClientsCountryCategoryEditComponent } from './WebAPIComponents/dbovwClientsCountryCategoryedit.component';
+
+
+import { dbovwCountyComponent } from './WebAPIComponents/dbovwCounty.component';
+
+import { dbovwCountyAddComponent } from './WebAPIComponents/dbovwCountyadd.component';
+
+import { dbovwCountyEditComponent } from './WebAPIComponents/dbovwCountyedit.component';
 
 
 
 @NgModule({
   declarations: [
 
-    KPIComponent,
-
-    
-    ClientComponent,
-    ClientAddComponent,
-		ClientEditComponent,
-    NNDvsUnivComponent,
-    NNDvsUnivAddComponent,
-    NNDvsUnivEditComponent,
-    CifreAnualeComponent,
-    CifreAnualeAddComponent,
-    CifreAnualeEditComponent,
-    
-    SalesRepComponent,
-    SalesRepAddComponent,
-		SalesRepEditComponent,
+    dboACTPLComponent,
+    dboACTPLAddComponent,
+		dboACTPLEditComponent,
 		
-    SRCkientiComponent,
-    SRCkientiAddComponent,
-    SRCkientiEditComponent,
-    
-    TargetSRComponent,
-    TargetSRAddComponent,
-		TargetSREditComponent,
+    dboAssVAComponent,
+    dboAssVAAddComponent,
+		dboAssVAEditComponent,
 		
-    ValueSRComponent,
-    ValueSRAddComponent,
-		ValueSREditComponent,
-    
+    dboAssVAClientsCountiesComponent,
+    dboAssVAClientsCountiesAddComponent,
+		dboAssVAClientsCountiesEditComponent,
+		
+    dboCategoryComponent,
+    dboCategoryAddComponent,
+		dboCategoryEditComponent,
+		
+    dboClientsComponent,
+    dboClientsAddComponent,
+		dboClientsEditComponent,
+		
+    dboClientsCategoryComponent,
+    dboClientsCategoryAddComponent,
+		dboClientsCategoryEditComponent,
+		
+    dboClientsCountiesComponent,
+    dboClientsCountiesAddComponent,
+		dboClientsCountiesEditComponent,
+		
+    dboCountryComponent,
+    dboCountryAddComponent,
+		dboCountryEditComponent,
+		
+    dboCountyComponent,
+    dboCountyAddComponent,
+		dboCountyEditComponent,
+		
+    dboKPI11Component,
+    dboKPI11AddComponent,
+		dboKPI11EditComponent,
+		
+    dbovwACTPL_Ass_ClientsComponent,
+    dbovwACTPL_Ass_ClientsAddComponent,
+		dbovwACTPL_Ass_ClientsEditComponent,
+		
+    dbovwAssClientsComponent,
+    dbovwAssClientsAddComponent,
+		dbovwAssClientsEditComponent,
+		
+    dbovwAssManagerComponent,
+    dbovwAssManagerAddComponent,
+		dbovwAssManagerEditComponent,
+		
+    dbovwClientsBaseComponent,
+    dbovwClientsBaseAddComponent,
+		dbovwClientsBaseEditComponent,
+		
+    dbovwClientsCountryCategoryComponent,
+    dbovwClientsCountryCategoryAddComponent,
+		dbovwClientsCountryCategoryEditComponent,
+		
+    dbovwCountyComponent,
+    dbovwCountyAddComponent,
+		dbovwCountyEditComponent,
 		    AppComponent,
     NavbarComponent,
     AboutComponent,
-    DashboardComponent,
-    KPIComponent 
+    DashboardComponent 
   ],
   imports: [
     NgxChartsModule,
@@ -208,7 +307,8 @@ import { LowerCaseUrlSerializer } from './routeHelper/lowercase';
   {
     provide: UrlSerializer,
     useClass: LowerCaseUrlSerializer
-} 
+  } ,
+  Title,
   ],
   bootstrap: [AppComponent]
 })

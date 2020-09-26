@@ -1,0 +1,82 @@
+
+Add  new dbo.AssVAClientsCounties
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	
+
+	<tr>
+	<td>IDAssVA</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idassva" />
+
+					<mat-form-field appearance="fill">
+						<mat-select  [(ngModel)]="dataToAdd.idassva" >
+							
+							<mat-option *ngFor="let item of dboAssVAAll" [value]="item.idassva">
+							  {{item | json}}
+							</mat-option>
+						  </mat-select>
+						</mat-form-field>
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDAssVAClientsCounties</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idassvaclientscounties" />
+
+	</td>
+	</tr>
+
+	
+	
+	<tr>
+	<td>IDClientsCounties</td>
+	<td>
+
+		<input type="text"  [(ngModel)]="dataToAdd.idclientscounties" />
+
+					<mat-form-field appearance="fill">
+						<mat-select  [(ngModel)]="dataToAdd.idclientscounties" >
+							
+							<mat-option *ngFor="let item of dboClientsCountiesAll" [value]="item.idclientscounties">
+							  {{item | json}}
+							</mat-option>
+						  </mat-select>
+						</mat-form-field>
+	</td>
+	</tr>
+
+	
+				
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+				  &nbsp;
+				</td>
+			  </tr>
+
+			  <tr>
+				 
+				<td align="left">
+				  <button (click)="add()">Add</button>
+				</td>
+											
+
+				<td align="left">
+				  <button (click)="cancel()">Back to list of dbo.AssVAClientsCounties</button>
+				</td>
+			  </tr>
+			
+			
+</table>
