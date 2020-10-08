@@ -232,7 +232,12 @@ GO
 GO
 SET IDENTITY_INSERT [dbo].[Country] ON 
 GO
-INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'RO', 1, N'Romania')
+INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'B', 1, N'Bucuresti')
+GO
+INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'RG1', 2, N'Regiunea 1')
+GO
+INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'RG2', 3, N'Regiunea 2')
+
 GO
 SET IDENTITY_INSERT [dbo].[Country] OFF
 GO
@@ -240,13 +245,13 @@ SET IDENTITY_INSERT [dbo].[County] ON
 GO
 INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'B', 1, N'Bucuresti', 1)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'AB', 2, N'Alba', 1)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'AB', 2, N'Alba', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'AR', 3, N'Arad', 1)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'AR', 3, N'Arad', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'Arges', 4, N'AG', 1)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'Arges', 4, N'AG', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'Bacau', 5, N'BC', 1)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'Bacau', 5, N'BC', 2)
 GO
 SET IDENTITY_INSERT [dbo].[County] OFF
 GO
