@@ -19,7 +19,7 @@ namespace TestWebAPI
         {
             this.dc = dc;
         }
-        public async Task<People[]> ManagerFilters()
+        public async Task<People[]> Managers()
         {
             return await dc.GetHierarchical();
         }
