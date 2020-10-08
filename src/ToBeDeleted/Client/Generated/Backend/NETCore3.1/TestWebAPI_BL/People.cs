@@ -9,5 +9,9 @@ namespace TestWebAPI_BL
         public dboAssVA Manager { get; set; }
         public People[] Team { get; set; }
 
+        public int NumberPeopleInTeam()
+        {
+            return Team?.Length ?? 0;
+        }
     }
 }
