@@ -10,7 +10,7 @@ namespace TestWEBAPI_DAL
 {
     public partial class DatabaseContext
     {
-        public async Task<People[]> GetHierarchical()
+        public async Task<People[]> GetHierarchicalPeople()
         {
             var managers = await this.dboAssVA.Where(it => it.idmanager == null).ToArrayAsync();
             var ret = new List<People>(managers.Length);
@@ -26,8 +26,24 @@ namespace TestWEBAPI_DAL
             return ret.ToArray();
 
         }
+        public async Task<CountryData[]> GetHierarchicalCountry()
+        {
+            var cnt = await this.dboCountry.ToArrayAsync();
+            var ret = new List<CountryData>(cnt.Length);
 
-        private async Task<People[]> FindTeam(People manager)
+            foreach (var item in cnt)
+            {
+                var c = new CountryData();
+                c.Country = item;
+                c.Counties = await this.dboCounty.Where(it => it.idcountry == item.idcountry).ToArrayAsync();
+                ret.Add(c);                
+                
+            }
+            return ret.ToArray();
+
+        }
+
+            private async Task<People[]> FindTeam(People manager)
         {
             var idManager = manager.Manager.idassva;
             var team = await dboAssVA.Where(it => it.idmanager == idManager).ToArrayAsync();

@@ -21,7 +21,12 @@ namespace TestWebAPI
         }
         public async Task<People[]> Managers()
         {
-            return await dc.GetHierarchical();
+            return await dc.GetHierarchicalPeople();
+        }
+
+        public async Task<CountryData[]> Countries()
+        {
+            return await dc.GetHierarchicalCountry();
         }
     }
 }
