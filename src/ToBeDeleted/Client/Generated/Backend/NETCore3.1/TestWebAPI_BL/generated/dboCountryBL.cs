@@ -25,9 +25,12 @@ namespace TestWebAPI_BL
                 this.idcountry= other.idcountry;
             }
                 
-            this.namecountry = other.namecountry;
+
+                var x="";
                 
-            this.shortnamecountry = other.shortnamecountry;
+            this.namecountry = other.namecountry;            
+                
+            this.shortnamecountry = other.shortnamecountry;            
                 
             OnCopyConstructor(other,withID);
         }

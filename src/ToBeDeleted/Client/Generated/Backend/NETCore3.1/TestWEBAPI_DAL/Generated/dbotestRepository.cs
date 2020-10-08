@@ -9,21 +9,21 @@ using TestWebAPI_BL;
 
 namespace TestWEBAPI_DAL
 {
-    public partial class dbovwClientsBase_Repository :IRepositoryView<dbovwClientsBase>
+    public partial class dbotest_Repository :IRepositoryView<dbotest>
     {
         private readonly DatabaseContext databaseContext;
 
-        public dbovwClientsBase_Repository (DatabaseContext databaseContext)
+        public dbotest_Repository (DatabaseContext databaseContext)
         {
             this.databaseContext = databaseContext;
         }
-        public Task<dbovwClientsBase[]> GetAll()
+        public Task<dbotest[]> GetAll()
         {
-            return databaseContext.dbovwClientsBase.ToArrayAsync();
+            return databaseContext.dbotest.ToArrayAsync();
         }
         public Task<long> Count()
         {
-            return databaseContext.dbovwClientsBase.LongCountAsync();
+            return databaseContext.dbotest.LongCountAsync();
         }
 
             }

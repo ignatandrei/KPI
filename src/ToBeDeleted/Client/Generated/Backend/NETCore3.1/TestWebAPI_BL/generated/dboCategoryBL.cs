@@ -25,9 +25,12 @@ namespace TestWebAPI_BL
                 this.idcategory= other.idcategory;
             }
                 
-            this.namecategory = other.namecategory;
+
+                var x="";
                 
-            this.shortnamecategory = other.shortnamecategory;
+            this.namecategory = other.namecategory;            
+                
+            this.shortnamecategory = other.shortnamecategory;            
                 
             OnCopyConstructor(other,withID);
         }

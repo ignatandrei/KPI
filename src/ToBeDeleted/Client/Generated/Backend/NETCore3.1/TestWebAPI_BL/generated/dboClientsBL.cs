@@ -25,9 +25,12 @@ namespace TestWebAPI_BL
                 this.idclient= other.idclient;
             }
                 
-            this.nameclient = other.nameclient;
+
+                var x="";
                 
-            this.shortnameclient = other.shortnameclient;
+            this.nameclient = other.nameclient;            
+                
+            this.shortnameclient = other.shortnameclient;            
                 
             OnCopyConstructor(other,withID);
         }

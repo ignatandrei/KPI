@@ -25,9 +25,12 @@ namespace TestWebAPI_BL
                 this.idclientscounties= other.idclientscounties;
             }
                 
-            this.idclient = other.idclient;
+
+                var x="";
                 
-            this.idcounty = other.idcounty;
+            this.idclient = other.idclient;            
+                
+            this.idcounty = other.idcounty;            
                 
             OnCopyConstructor(other,withID);
         }

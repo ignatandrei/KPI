@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using NetCore2Blockly;
 using TestWebAPI_BL;
 using TestWEBAPI_DAL;
@@ -37,6 +38,13 @@ namespace TestWebAPI
             // add logging
             services.AddCors();
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyApplication", Version = "v1" });
+            });
+
+
             services.AddDbContext<DatabaseContext>(options => 
 
 {
@@ -52,37 +60,27 @@ namespace TestWebAPI
                             
                     });
                     
-			services.AddTransient<IRepository<dboACTPL,Int64>, dboACTPL_Repository>();;
+			services.AddTransient<IRepository<dboACTPL,Int64>, dboACTPL_Repository>();
             
-			services.AddTransient<IRepository<dboAssVA,Int64>, dboAssVA_Repository>();;
+			services.AddTransient<IRepository<dboAssVA,Int64>, dboAssVA_Repository>();
             
-			services.AddTransient<IRepository<dboAssVAClientsCounties,Int64>, dboAssVAClientsCounties_Repository>();;
+			services.AddTransient<IRepository<dboAssVAClientsCounties,Int64>, dboAssVAClientsCounties_Repository>();
             
-			services.AddTransient<IRepository<dboCategory,Int32>, dboCategory_Repository>();;
+			services.AddTransient<IRepository<dboCategory,Int32>, dboCategory_Repository>();
             
-			services.AddTransient<IRepository<dboClients,Int64>, dboClients_Repository>();;
+			services.AddTransient<IRepository<dboClients,Int64>, dboClients_Repository>();
             
-			services.AddTransient<IRepository<dboClientsCategory,Int64>, dboClientsCategory_Repository>();;
+			services.AddTransient<IRepository<dboClientsCategory,Int64>, dboClientsCategory_Repository>();
             
-			services.AddTransient<IRepository<dboClientsCounties,Int64>, dboClientsCounties_Repository>();;
+			services.AddTransient<IRepository<dboClientsCounties,Int64>, dboClientsCounties_Repository>();
             
-			services.AddTransient<IRepository<dboCountry,Int32>, dboCountry_Repository>();;
+			services.AddTransient<IRepository<dboCountry,Int32>, dboCountry_Repository>();
             
-			services.AddTransient<IRepository<dboCounty,Int64>, dboCounty_Repository>();;
+			services.AddTransient<IRepository<dboCounty,Int64>, dboCounty_Repository>();
             
-			services.AddTransient<IRepositoryView<dboKPI11>, dboKPI11_Repository>();;
+			services.AddTransient<IRepositoryView<dbotest>, dbotest_Repository>();
             
-			services.AddTransient<IRepositoryView<dbovwACTPL_Ass_Clients>, dbovwACTPL_Ass_Clients_Repository>();;
-            
-			services.AddTransient<IRepositoryView<dbovwAssClients>, dbovwAssClients_Repository>();;
-            
-			services.AddTransient<IRepositoryView<dbovwAssManager>, dbovwAssManager_Repository>();;
-            
-			services.AddTransient<IRepositoryView<dbovwClientsBase>, dbovwClientsBase_Repository>();;
-            
-			services.AddTransient<IRepositoryView<dbovwClientsCountryCategory>, dbovwClientsCountryCategory_Repository>();;
-            
-			services.AddTransient<IRepositoryView<dbovwCounty>, dbovwCounty_Repository>();;
+			services.AddTransient<IRepository<dboTestAndrei,Int32>, dboTestAndrei_Repository>();
              
          }
 
@@ -92,6 +90,9 @@ namespace TestWebAPI
 			
 			app.UseBlockly();
             app.UseBlocklyUI();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
+
             
             if (env.IsDevelopment())
             {
@@ -135,19 +136,9 @@ namespace TestWebAPI
             
 			endpoints.MapFallbackToFile("dbocounty/{**slug}","/index.html");
             
-			endpoints.MapFallbackToFile("dbokpi11/{**slug}","/index.html");
+			endpoints.MapFallbackToFile("dbotest/{**slug}","/index.html");
             
-			endpoints.MapFallbackToFile("dbovwactpl_ass_clients/{**slug}","/index.html");
-            
-			endpoints.MapFallbackToFile("dbovwassclients/{**slug}","/index.html");
-            
-			endpoints.MapFallbackToFile("dbovwassmanager/{**slug}","/index.html");
-            
-			endpoints.MapFallbackToFile("dbovwclientsbase/{**slug}","/index.html");
-            
-			endpoints.MapFallbackToFile("dbovwclientscountrycategory/{**slug}","/index.html");
-            
-			endpoints.MapFallbackToFile("dbovwcounty/{**slug}","/index.html");
+			endpoints.MapFallbackToFile("dbotestandrei/{**slug}","/index.html");
                          
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("{**slug}", "/index.html");

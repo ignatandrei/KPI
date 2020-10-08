@@ -25,11 +25,14 @@ namespace TestWebAPI_BL
                 this.idassva= other.idassva;
             }
                 
-            this.idmanager = other.idmanager;
+
+                var x="";
                 
-            this.nameassva = other.nameassva;
+            this.idmanager = other.idmanager;            
                 
-            this.shortnameassva = other.shortnameassva;
+            this.nameassva = other.nameassva;            
+                
+            this.shortnameassva = other.shortnameassva;            
                 
             OnCopyConstructor(other,withID);
         }

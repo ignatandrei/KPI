@@ -25,9 +25,12 @@ namespace TestWebAPI_BL
                 this.id= other.id;
             }
                 
-            this.idcategory = other.idcategory;
+
+                var x="";
                 
-            this.idclient = other.idclient;
+            this.idcategory = other.idcategory;            
+                
+            this.idclient = other.idclient;            
                 
             OnCopyConstructor(other,withID);
         }

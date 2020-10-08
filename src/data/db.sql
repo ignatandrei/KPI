@@ -299,26 +299,30 @@ GO
 GO
 SET IDENTITY_INSERT [dbo].[AssVA] ON 
 GO
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (20, N'RG1', N'Reg Manager1', NULL)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (8, N'IW', N'Isaias Worrell  ', NULL)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (21, N'RG2', N'Reg Manager2', NULL)
+
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (9, N'DC', N'Denisse Chadwell  ', NULL)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (8, N'IW', N'Isaias Worrell', 20)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (10, N'GA', N'Gilberte Albano  ', NULL)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (9, N'DC', N'Denisse Chadwell', 20)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (1, N'BC', N'Bess Conlan  ', 8)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (10, N'GA', N'Gilberte Albano', 21)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (2, N'RB', N'Reena Burget  ', 9)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (1, N'BC', N'Bess Conlan', 8)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (3, N'SB', N'Sanjuanita Bigelow  ', 10)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (2, N'RB', N'Reena Burget', 9)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (4, N'LF', N'Latina Faas  ', 9)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (3, N'SB', N'Sanjuanita Bigelow', 10)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (5, N'IH', N'Iola Hannon  ', 8)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (4, N'LF', N'Latina Faas', 9)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (6, N'NH', N'Nubia Holmgren  ', 10)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (5, N'IH', N'Iola Hannon', 8)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (7, N'HS', N'Hwa Speier  ', 8)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (6, N'NH', N'Nubia Holmgren', 10)
+GO
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (7, N'HS', N'Hwa Speier', 8)
 SET IDENTITY_INSERT [dbo].[AssVA] OFF
 GO
 GO

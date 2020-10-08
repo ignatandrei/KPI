@@ -14,11 +14,11 @@ namespace TestWebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class dbovwAssClientsController : ControllerBase
+    public class dbotestController : ControllerBase
     {
-        private readonly  IRepositoryView<dbovwAssClients> _repository;
+        private readonly  IRepositoryView<dbotest> _repository;
 
-        public dbovwAssClientsController(IRepositoryView<dbovwAssClients> repository)
+        public dbotestController(IRepositoryView<dbotest> repository)
         {
             _repository = repository;
         }
@@ -27,9 +27,9 @@ namespace TestWebAPI.Controllers
         {
             return await _repository.Count();
         }
-        // GET: api/dbovwAssClients
+        // GET: api/dbotest
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<dbovwAssClients>>> GetAll()
+        public async Task<ActionResult<IEnumerable<dbotest>>> GetAll()
         {
             return await _repository.GetAll();
         }

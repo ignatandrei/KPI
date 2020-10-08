@@ -25,11 +25,14 @@ namespace TestWebAPI_BL
                 this.idcounty= other.idcounty;
             }
                 
-            this.idcountry = other.idcountry;
+
+                var x="";
                 
-            this.namecounty = other.namecounty;
+            this.idcountry = other.idcountry;            
                 
-            this.shortnamecounty = other.shortnamecounty;
+            this.namecounty = other.namecounty;            
+                
+            this.shortnamecounty = other.shortnamecounty;            
                 
             OnCopyConstructor(other,withID);
         }

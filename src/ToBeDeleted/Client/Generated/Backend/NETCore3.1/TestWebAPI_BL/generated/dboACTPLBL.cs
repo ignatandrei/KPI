@@ -25,15 +25,18 @@ namespace TestWebAPI_BL
                 this.idactpl= other.idactpl;
             }
                 
-            this.actual = other.actual;
+
+                var x="";
                 
-            this.idassvaclientscounties = other.idassvaclientscounties;
+            this.actual = other.actual;            
                 
-            this.month = other.month;
+            this.idassvaclientscounties = other.idassvaclientscounties;            
                 
-            this.plan = other.plan;
+            this.month = other.month;            
                 
-            this.year = other.year;
+            this.plan = other.plan;            
+                
+            this.year = other.year;            
                 
             OnCopyConstructor(other,withID);
         }
