@@ -42,8 +42,33 @@ namespace TestWEBAPI_DAL
             return ret.ToArray();
 
         }
+        public async Task<ClientData[]> GetHierarchicalClients()
+        {
+            var cnt = await this.dboCategory.ToArrayAsync();
+            var ret = new List<ClientData>(cnt.Length);
 
-            private async Task<People[]> FindTeam(People manager)
+            foreach (var item in cnt)
+            {
+                var c = new ClientData();
+                c.Channel = item;
+                var idCLients= await this.dboClientsCategory
+                        .Where(it => it.idcategory== item.idcategory)
+                        .Select(it=>it.idclient)
+                        .ToArrayAsync();
+
+                if (idCLients.Length > 0)
+                {
+                    c.Clients = await this.dboClients.Where(it => idCLients.Contains(it.idclient)).ToArrayAsync();
+                }
+                ret.Add(c);
+
+            }
+            return ret.ToArray();
+
+        }
+
+
+        private async Task<People[]> FindTeam(People manager)
         {
             var idManager = manager.Manager.idassva;
             var team = await dboAssVA.Where(it => it.idmanager == idManager).ToArrayAsync();

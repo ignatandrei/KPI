@@ -28,5 +28,10 @@ namespace TestWebAPI
         {
             return await dc.GetHierarchicalRegion();
         }
+
+        public async Task<ClientData[]> Clients()
+        {
+            return await dc.GetHierarchicalClients();
+        }
     }
 }

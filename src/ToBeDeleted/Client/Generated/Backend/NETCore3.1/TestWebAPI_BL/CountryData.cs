@@ -1,5 +1,6 @@
 ﻿namespace TestWebAPI_BL
 {
+
     public class RegionData
     {
         public dboRegion Region { get; set; }
