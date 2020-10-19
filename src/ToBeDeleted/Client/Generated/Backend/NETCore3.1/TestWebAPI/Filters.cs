@@ -8,6 +8,8 @@ using TestWEBAPI_DAL;
 
 namespace TestWebAPI
 {
+
+
     [Route("api/[controller]/[action]")]
     [ApiController]
 
@@ -19,16 +21,17 @@ namespace TestWebAPI
         {
             this.dc = dc;
         }
+        [HttpGet]
         public async Task<People[]> Managers()
         {
             return await dc.GetHierarchicalPeople();
         }
-
+        [HttpGet]
         public async Task<RegionData[]> Regions()
         {
             return await dc.GetHierarchicalRegion();
         }
-
+        [HttpGet]
         public async Task<ClientData[]> Clients()
         {
             return await dc.GetHierarchicalClients();
