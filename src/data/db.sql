@@ -1,4 +1,4 @@
-ALTER TABLE [dbo].[County] DROP CONSTRAINT [FK_County_Country]
+ALTER TABLE [dbo].[County] DROP CONSTRAINT [FK_County_Region]
 GO
 ALTER TABLE [dbo].[ClientsCounties] DROP CONSTRAINT [FK_ClientsCounties_County]
 GO
@@ -19,8 +19,8 @@ GO
 /****** Object:  Table [dbo].[County]    Script Date: 9/24/2020 8:24:23 AM ******/
 DROP TABLE [dbo].[County]
 GO
-/****** Object:  Table [dbo].[Country]    Script Date: 9/24/2020 8:24:23 AM ******/
-DROP TABLE [dbo].[Country]
+/****** Object:  Table [dbo].[Region]    Script Date: 9/24/2020 8:24:23 AM ******/
+DROP TABLE [dbo].[Region]
 GO
 /****** Object:  Table [dbo].[ClientsCounties]    Script Date: 9/24/2020 8:24:23 AM ******/
 DROP TABLE [dbo].[ClientsCounties]
@@ -152,18 +152,18 @@ CREATE TABLE [dbo].[ClientsCounties](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Country]    Script Date: 9/24/2020 8:24:23 AM ******/
+/****** Object:  Table [dbo].[Region]    Script Date: 9/24/2020 8:24:23 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Country](
-	[ShortNameCountry] [nvarchar](10) NOT NULL,
-	[IDCountry] [int] IDENTITY(1,1) NOT NULL,
-	[NameCountry] [nvarchar](100) NULL,
- CONSTRAINT [PK_Country] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[Region](
+	[ShortNameRegion] [nvarchar](10) NOT NULL,
+	[IDRegion] [int] IDENTITY(1,1) NOT NULL,
+	[NameRegion] [nvarchar](100) NULL,
+ CONSTRAINT [PK_Region] PRIMARY KEY CLUSTERED 
 (
-	[IDCountry] ASC
+	[IDRegion] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -176,7 +176,7 @@ CREATE TABLE [dbo].[County](
 	[ShortNameCounty] [nvarchar](10) NOT NULL,
 	[IDCounty] [bigint] IDENTITY(1,1) NOT NULL,
 	[NameCounty] [nvarchar](100) NULL,
-	[IDCountry] [int] NOT NULL,
+	[IDRegion] [int] NOT NULL,
  CONSTRAINT [PK_County] PRIMARY KEY CLUSTERED 
 (
 	[IDCounty] ASC
@@ -223,35 +223,35 @@ REFERENCES [dbo].[County] ([IDCounty])
 GO
 ALTER TABLE [dbo].[ClientsCounties] CHECK CONSTRAINT [FK_ClientsCounties_County]
 GO
-ALTER TABLE [dbo].[County]  WITH CHECK ADD  CONSTRAINT [FK_County_Country] FOREIGN KEY([IDCountry])
-REFERENCES [dbo].[Country] ([IDCountry])
+ALTER TABLE [dbo].[County]  WITH CHECK ADD  CONSTRAINT [FK_County_Region] FOREIGN KEY([IDRegion])
+REFERENCES [dbo].[Region] ([IDRegion])
 GO
-ALTER TABLE [dbo].[County] CHECK CONSTRAINT [FK_County_Country]
+ALTER TABLE [dbo].[County] CHECK CONSTRAINT [FK_County_Region]
 GO
 
 GO
-SET IDENTITY_INSERT [dbo].[Country] ON 
+SET IDENTITY_INSERT [dbo].[Region] ON 
 GO
-INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'B', 1, N'Bucuresti')
+INSERT [dbo].[Region] ([ShortNameRegion], [IDRegion], [NameRegion]) VALUES (N'B', 1, N'Bucuresti')
 GO
-INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'RG1', 2, N'Regiunea 1')
+INSERT [dbo].[Region] ([ShortNameRegion], [IDRegion], [NameRegion]) VALUES (N'RG1', 2, N'Regiunea 1')
 GO
-INSERT [dbo].[Country] ([ShortNameCountry], [IDCountry], [NameCountry]) VALUES (N'RG2', 3, N'Regiunea 2')
+INSERT [dbo].[Region] ([ShortNameRegion], [IDRegion], [NameRegion]) VALUES (N'RG2', 3, N'Regiunea 2')
 
 GO
-SET IDENTITY_INSERT [dbo].[Country] OFF
+SET IDENTITY_INSERT [dbo].[Region] OFF
 GO
 SET IDENTITY_INSERT [dbo].[County] ON 
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'B', 1, N'Bucuresti', 1)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'B', 1, N'Bucuresti', 1)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'AB', 2, N'Alba', 2)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'AB', 2, N'Alba', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'AR', 3, N'Arad', 2)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'AR', 3, N'Arad', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'Arges', 4, N'AG', 2)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'Arges', 4, N'AG', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDCountry]) VALUES (N'Bacau', 5, N'BC', 2)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'Bacau', 5, N'BC', 2)
 GO
 SET IDENTITY_INSERT [dbo].[County] OFF
 GO
