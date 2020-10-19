@@ -9,58 +9,58 @@ using TestWebAPI_BL;
 
 namespace TestWEBAPI_DAL
 {
-    public partial class dboCountry_Repository :IRepository<dboCountry,Int32>
+    public partial class dboRegion_Repository :IRepository<dboRegion,Int32>
     {
         private readonly DatabaseContext databaseContext;
 
-        public dboCountry_Repository (DatabaseContext databaseContext)
+        public dboRegion_Repository (DatabaseContext databaseContext)
         {
             this.databaseContext = databaseContext;
         }
-        public Task<dboCountry[]> GetAll()
+        public Task<dboRegion[]> GetAll()
         {
-            return databaseContext.dboCountry.ToArrayAsync();
+            return databaseContext.dboRegion.ToArrayAsync();
         }
         public Task<long> Count()
         {
-            return databaseContext.dboCountry.LongCountAsync();
+            return databaseContext.dboRegion.LongCountAsync();
         }
-        public Task<dboCountry> FindAfterId(Int32 id)
+        public Task<dboRegion> FindAfterId(Int32 id)
         {
-            var data = databaseContext.dboCountry.FirstOrDefaultAsync(it => it.idcountry == id);
+            var data = databaseContext.dboRegion.FirstOrDefaultAsync(it => it.idRegion == id);
             return data;
         }
-        public Task<dboCountry> FindSingle(Func<dboCountry ,bool> f)
+        public Task<dboRegion> FindSingle(Func<dboRegion ,bool> f)
         {
-            var data = databaseContext.dboCountry.FirstOrDefaultAsync(it=>f(it));
+            var data = databaseContext.dboRegion.FirstOrDefaultAsync(it=>f(it));
             return data;
         }
-        public Task<dboCountry[]> FindMultiple(Func<dboCountry, bool> f)
+        public Task<dboRegion[]> FindMultiple(Func<dboRegion, bool> f)
         {
-            var data = databaseContext.dboCountry.Where(it=>f(it));
+            var data = databaseContext.dboRegion.Where(it=>f(it));
             return data.ToArrayAsync();
         }
-        public async Task<dboCountry> Insert(dboCountry p)
+        public async Task<dboRegion> Insert(dboRegion p)
         {
-            databaseContext.dboCountry.Add(p);
+            databaseContext.dboRegion.Add(p);
             await databaseContext.SaveChangesAsync();
             return p;
         }
-        public async Task<dboCountry> Update(dboCountry p)
+        public async Task<dboRegion> Update(dboRegion p)
         {
-            var original = await FindAfterId(p.idcountry);
+            var original = await FindAfterId(p.idRegion);
             if(original == null)
             {
-                throw new ArgumentException($"cannot found dboCountry  with id = {p.idcountry} ", nameof(p.idcountry));
+                throw new ArgumentException($"cannot found dboRegion  with id = {p.idRegion} ", nameof(p.idRegion));
             }
             original.CopyPropertiesFrom(other: p, withID: true);                        
             await databaseContext.SaveChangesAsync();
             return p;
         }
-        public async Task<dboCountry> Delete(dboCountry p)
+        public async Task<dboRegion> Delete(dboRegion p)
         {
-            var original = await FindAfterId(p.idcountry);
-            databaseContext.dboCountry.Remove(original);
+            var original = await FindAfterId(p.idRegion);
+            databaseContext.dboRegion.Remove(original);
             await databaseContext.SaveChangesAsync();
             return p;
         }

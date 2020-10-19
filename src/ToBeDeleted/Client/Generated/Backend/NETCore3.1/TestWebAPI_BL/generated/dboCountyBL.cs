@@ -28,7 +28,7 @@ namespace TestWebAPI_BL
 
                 var x="";
                 
-            this.idcountry = other.idcountry;            
+            this.idRegion = other.idRegion;            
                 
             this.namecounty = other.namecounty;            
                 
@@ -44,7 +44,7 @@ namespace TestWebAPI_BL
                 public Int64 idcounty{get;set;}
                 
 
-            public Int32 idcountry { get; set; }
+            public Int32 idRegion { get; set; }
             
             public String namecounty { get; set; }
             

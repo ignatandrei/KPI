@@ -74,7 +74,7 @@ namespace TestWebAPI
             
 			services.AddTransient<IRepository<dboClientsCounties,Int64>, dboClientsCounties_Repository>();
             
-			services.AddTransient<IRepository<dboCountry,Int32>, dboCountry_Repository>();
+			services.AddTransient<IRepository<dboRegion,Int32>, dboRegion_Repository>();
             
 			services.AddTransient<IRepository<dboCounty,Int64>, dboCounty_Repository>();
             
@@ -132,7 +132,7 @@ namespace TestWebAPI
             
 			endpoints.MapFallbackToFile("dboclientscounties/{**slug}","/index.html");
             
-			endpoints.MapFallbackToFile("dbocountry/{**slug}","/index.html");
+			endpoints.MapFallbackToFile("dboRegion/{**slug}","/index.html");
             
 			endpoints.MapFallbackToFile("dbocounty/{**slug}","/index.html");
             

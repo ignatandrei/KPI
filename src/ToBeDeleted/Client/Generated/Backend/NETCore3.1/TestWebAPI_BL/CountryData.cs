@@ -1,8 +1,8 @@
 ﻿namespace TestWebAPI_BL
 {
-    public class CountryData
+    public class RegionData
     {
-        public dboCountry Country { get; set; }
+        public dboRegion Region { get; set; }
         public dboCounty[] Counties { get; set; }
 
         public int NumberCounties

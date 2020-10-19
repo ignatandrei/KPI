@@ -31,7 +31,7 @@ namespace TestWEBAPI_DAL
             
             public virtual DbSet<dboClientsCounties> dboClientsCounties{ get; set; }
             
-            public virtual DbSet<dboCountry> dboCountry{ get; set; }
+            public virtual DbSet<dboRegion> dboRegion{ get; set; }
             
             public virtual DbSet<dboCounty> dboCounty{ get; set; }
             
@@ -73,9 +73,9 @@ namespace TestWEBAPI_DAL
                 .ToTable("ClientsCounties","dbo")
                 .HasKey(it=>it.idclientscounties);
          
-            modelBuilder.Entity<dboCountry>()
-                .ToTable("Country","dbo")
-                .HasKey(it=>it.idcountry);
+            modelBuilder.Entity<dboRegion>()
+                .ToTable("Region","dbo")
+                .HasKey(it=>it.idRegion);
          
             modelBuilder.Entity<dboCounty>()
                 .ToTable("County","dbo")
@@ -141,13 +141,13 @@ namespace TestWEBAPI_DAL
                     
                         modelBuilder.Entity<dboClientsCounties>().Property(it => it.idcounty).HasColumnName("IDCounty");
                     
-                        modelBuilder.Entity<dboCountry>().Property(it => it.idcountry).HasColumnName("IDCountry");
+                        modelBuilder.Entity<dboRegion>().Property(it => it.idRegion).HasColumnName("IDRegion");
                     
-                        modelBuilder.Entity<dboCountry>().Property(it => it.namecountry).HasColumnName("NameCountry");
+                        modelBuilder.Entity<dboRegion>().Property(it => it.nameRegion).HasColumnName("NameRegion");
                     
-                        modelBuilder.Entity<dboCountry>().Property(it => it.shortnamecountry).HasColumnName("ShortNameCountry");
+                        modelBuilder.Entity<dboRegion>().Property(it => it.shortnameRegion).HasColumnName("ShortNameRegion");
                     
-                        modelBuilder.Entity<dboCounty>().Property(it => it.idcountry).HasColumnName("IDCountry");
+                        modelBuilder.Entity<dboCounty>().Property(it => it.idRegion).HasColumnName("IDRegion");
                     
                         modelBuilder.Entity<dboCounty>().Property(it => it.idcounty).HasColumnName("IDCounty");
                     

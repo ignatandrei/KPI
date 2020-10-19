@@ -26,16 +26,16 @@ namespace TestWEBAPI_DAL
             return ret.ToArray();
 
         }
-        public async Task<CountryData[]> GetHierarchicalCountry()
+        public async Task<RegionData[]> GetHierarchicalRegion()
         {
-            var cnt = await this.dboCountry.ToArrayAsync();
-            var ret = new List<CountryData>(cnt.Length);
+            var cnt = await this.dboRegion.ToArrayAsync();
+            var ret = new List<RegionData>(cnt.Length);
 
             foreach (var item in cnt)
             {
-                var c = new CountryData();
-                c.Country = item;
-                c.Counties = await this.dboCounty.Where(it => it.idcountry == item.idcountry).ToArrayAsync();
+                var c = new RegionData();
+                c.Region = item;
+                c.Counties = await this.dboCounty.Where(it => it.idRegion == item.idRegion).ToArrayAsync();
                 ret.Add(c);                
                 
             }

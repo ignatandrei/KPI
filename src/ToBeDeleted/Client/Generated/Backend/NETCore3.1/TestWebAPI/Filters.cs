@@ -24,9 +24,9 @@ namespace TestWebAPI
             return await dc.GetHierarchicalPeople();
         }
 
-        public async Task<CountryData[]> Countries()
+        public async Task<RegionData[]> Regions()
         {
-            return await dc.GetHierarchicalCountry();
+            return await dc.GetHierarchicalRegion();
         }
     }
 }

@@ -2,35 +2,35 @@ using System;
 
 namespace TestWebAPI_BL
 {
-    public partial class dboCountry
+    public partial class dboRegion
     {
         #region partial functions
         partial void OnConstructor();
-        partial void OnCopyConstructor(dboCountry other, bool withID);
+        partial void OnCopyConstructor(dboRegion other, bool withID);
         #endregion
 
         #region constructors
-        public dboCountry (){
+        public dboRegion (){
             OnConstructor();
         }
         
-        public dboCountry(dboCountry other):base(){ 
+        public dboRegion(dboRegion other):base(){ 
 
             OnCopyConstructor(other:other,withID: false);
                 
         }
-        public void CopyPropertiesFrom(dboCountry other, bool withID){
+        public void CopyPropertiesFrom(dboRegion other, bool withID){
 
             if(withID){
-                this.idcountry= other.idcountry;
+                this.idRegion= other.idRegion;
             }
                 
 
                 var x="";
                 
-            this.namecountry = other.namecountry;            
+            this.nameRegion = other.nameRegion;            
                 
-            this.shortnamecountry = other.shortnamecountry;            
+            this.shortnameRegion = other.shortnameRegion;            
                 
             OnCopyConstructor(other,withID);
         }
@@ -39,12 +39,12 @@ namespace TestWebAPI_BL
         
         #region Properties
 
-                public Int32 idcountry{get;set;}
+                public Int32 idRegion{get;set;}
                 
 
-            public String namecountry { get; set; }
+            public String nameRegion { get; set; }
             
-            public String shortnamecountry { get; set; }
+            public String shortnameRegion { get; set; }
                     #endregion
         
     }
