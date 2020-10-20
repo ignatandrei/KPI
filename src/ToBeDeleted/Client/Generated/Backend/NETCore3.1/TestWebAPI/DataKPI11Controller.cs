@@ -3,51 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TestWEBAPI_DAL;
+
 
 namespace TestWebAPI
 {
-    public class KVP
-    {
-        public int Key { get; set; }
-        public int Value { get; set; }
-    }
-    public class DataKPI11
-    {
-        public DataKPI11()
-        {
-            RegionIds = new Dictionary<int, List<int>>();
-            CategoryIds = new Dictionary<int, List<int>>();
-            ManagerIds = new Dictionary<int, List<int>>();
-        }
-        public Dictionary<int, List<int>> RegionIds;
-        public Dictionary<int, List<int>> CategoryIds;
-        public Dictionary<int, List<int>> ManagerIds;
-
-        public KeyValuePair<int, List<int>>[] Regions
-        {
-            get
-            {
-                return RegionIds.Select(it => it).ToArray();
-            }
-        }
-        public KeyValuePair<int, List<int>>[] Categories
-        {
-            get
-            {
-                return CategoryIds.Select(it => it).ToArray();
-            }
-        }
-        public KeyValuePair<int, List<int>>[] Managers
-        {
-            get
-            {
-                return ManagerIds.Select(it => it).ToArray();
-            }
-        }
-
-
-    }
-
+    
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class DataKPI11Controller : ControllerBase
@@ -69,7 +30,7 @@ namespace TestWebAPI
             var d = GetActualData(userId);
             if (!d.RegionIds.ContainsKey(region.Key))
             {
-                d.RegionIds.Add(region.Key, new List<int>());
+                d.RegionIds.Add(region.Key, new List<long>());
             }
             var l = d.RegionIds[region.Key];
             if (region.Value > 0)
@@ -90,7 +51,7 @@ namespace TestWebAPI
             var d = GetActualData(userId);
             if (!d.CategoryIds.ContainsKey(category.Key))
             {
-                d.CategoryIds.Add(category.Key, new List<int>());
+                d.CategoryIds.Add(category.Key, new List<long>());
             }
             var l = d.CategoryIds[category.Key];
             if (category.Value > 0)
@@ -109,7 +70,7 @@ namespace TestWebAPI
             var d = GetActualData(userId);
             if (!d.CategoryIds.ContainsKey(manager.Key))
             {
-                d.CategoryIds.Add(manager.Key, new List<int>());
+                d.CategoryIds.Add(manager.Key, new List<long>());
             }
             var l = d.CategoryIds[manager.Key];
             if (manager.Value > 0)
@@ -121,6 +82,12 @@ namespace TestWebAPI
                 l.Remove(-manager.Value);
             }
             return d;
+        }
+        [HttpGet("{userId}")]
+        public string GetData([FromRoute] string userId, [FromServices]DatabaseContext dc)
+        {
+            var d = GetActualData(userId);
+            return null;
         }
     }
 }

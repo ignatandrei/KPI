@@ -36,12 +36,14 @@ namespace TestWEBAPI_DAL
                 var c = new RegionData();
                 c.Region = item;
                 c.Counties = await this.dboCounty.Where(it => it.idRegion == item.idRegion).ToArrayAsync();
-                ret.Add(c);                
-                
+                ret.Add(c);
+
             }
             return ret.ToArray();
 
         }
+
+
         public async Task<ClientData[]> GetHierarchicalClients()
         {
             var cnt = await this.dboCategory.ToArrayAsync();
@@ -51,9 +53,9 @@ namespace TestWEBAPI_DAL
             {
                 var c = new ClientData();
                 c.Channel = item;
-                var idCLients= await this.dboClientsCategory
-                        .Where(it => it.idcategory== item.idcategory)
-                        .Select(it=>it.idclient)
+                var idCLients = await this.dboClientsCategory
+                        .Where(it => it.idcategory == item.idcategory)
+                        .Select(it => it.idclient)
                         .ToArrayAsync();
 
                 if (idCLients.Length > 0)
@@ -84,6 +86,84 @@ namespace TestWEBAPI_DAL
                 ret.Add(p);
             }
             return ret.ToArray();
+        }
+        public async Task<string> GetDataKP11(DataKPI11 data)
+        {
+            //var idClients = new List<long>();
+            //if (data.Categories?.Length > 0)
+            //{
+            //    foreach (var item in data.Categories)
+            //    {
+            //        switch (item.Key)
+            //        {
+            //            case 0://category
+            //                {
+            //                    var val = item.Value?.ToArray();
+            //                    if (val?.Length > 0)
+            //                    {
+            //                        var clients = await dboClientsCategory
+            //                           .Where(it => val.Contains(it.idcategory))
+            //                            .Select(it => it.idclient)
+            //                            .ToArrayAsync();
+
+            //                        if (clients.Length > 0)
+            //                            idClients.AddRange(clients);
+            //                    }
+            //                }
+            //                break;
+            //            case 1: //clients
+            //                {
+            //                    var val = item.Value?.ToArray();
+            //                    if (val?.Length > 0)
+            //                    {
+
+            //                        idClients.AddRange(val);
+            //                    }
+            //                }
+            //                break;
+            //            default:
+            //                throw new ArgumentException($"cannot have key {item.Key} for clients dictionary");
+            //        }
+            //    }
+            //}
+
+            var idAssVA = new List<long>();
+            if (data.Managers?.Length > 0)
+            {
+                foreach (var item in data.Managers)
+                {
+                    var val = item.Value;
+                    if ((val?.Count ?? 0) == 0)
+                        continue;
+
+                    switch (item.Key)
+                    {
+                        case 0:
+                            {
+                                idAssVA.AddRange(val);
+                            }
+                            break;
+                        case 1:
+                            {
+                                //TODO: make it recursive
+                                var ids = await dboAssVA
+                                    .Where(it => it.idmanager != null && val.Contains(it.idmanager.Value))
+                                    .Select(it => it.idassva)
+                                    .ToArrayAsync();
+
+                                idAssVA.AddRange(ids);
+                            }
+                            break;
+                        default:
+                            throw new ArgumentException($"cannot have key {item.Key} for clients dictionary");
+                    }
+                }
+            }
+            var idToCalculus = dboAssVAClientsCounties
+                .Where(it => idAssVA.Contains(it.idassva))
+                .Select(it => it.idassvaclientscounties);
+
+
         }
     }
 }
