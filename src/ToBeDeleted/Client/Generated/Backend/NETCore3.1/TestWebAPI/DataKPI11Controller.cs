@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using TestWEBAPI_DAL;
 
 
@@ -23,7 +24,15 @@ namespace TestWebAPI
             return data[userId];
             
         }
-
+        [HttpGet("{key}/{value}")]
+        public KVP GetKVP(int key,int value)
+        {
+            return new KVP()
+            {
+                Key = key,
+                Value = value
+            };
+        }
         [HttpPost("{userId}")]
         public DataKPI11 AddRegion([FromRoute]string userId, [FromBody] KVP region)
         {
@@ -68,11 +77,11 @@ namespace TestWebAPI
         public DataKPI11 AddManager([FromRoute] string userId, [FromBody] KVP manager)
         {
             var d = GetActualData(userId);
-            if (!d.CategoryIds.ContainsKey(manager.Key))
+            if (!d.ManagerIds.ContainsKey(manager.Key))
             {
-                d.CategoryIds.Add(manager.Key, new List<long>());
+                d.ManagerIds.Add(manager.Key, new List<long>());
             }
-            var l = d.CategoryIds[manager.Key];
+            var l = d.ManagerIds[manager.Key];
             if (manager.Value > 0)
             {
                 l.Add(manager.Value);
@@ -80,14 +89,16 @@ namespace TestWebAPI
             else
             {
                 l.Remove(-manager.Value);
+                if (l.Count == 0)
+                    d.ManagerIds.Remove(manager.Key);
             }
             return d;
         }
         [HttpGet("{userId}")]
-        public string GetData([FromRoute] string userId, [FromServices]DatabaseContext dc)
+        public Task<KPI11ShowData[]> GetData([FromRoute] string userId, [FromServices]DatabaseContext dc)
         {
             var d = GetActualData(userId);
-            return null;
+            return dc.GetDataKP11(d);
         }
     }
 }

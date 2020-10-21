@@ -21,6 +21,7 @@ namespace TestWebAPI
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -89,7 +90,14 @@ namespace TestWebAPI
         {
 			
 			app.UseBlockly();
-            app.UseBlocklyUI();
+            app.UseBlocklyUI(
+                new BlocklyUIOptions()
+                {
+                    HeaderName = "Trillion",
+                    StartBlocks = myStartBlocks,
+                    
+                }
+                );
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
 
@@ -151,5 +159,48 @@ namespace TestWebAPI
             using var context = scope.ServiceProvider.GetService<DatabaseContext>();
             context.Database.EnsureCreated();
         }
+
+        private string myStartBlocks = @"<xml xmlns='https://developers.google.com/blockly/xml'>
+  <variables>
+    <variable id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</variable>
+  </variables>
+  <block type='variables_set' x='96' y='135'>
+    <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
+    <value name='VALUE'>
+      <block type='TestWEBAPI_DAL_KVP'>
+        <value name='val_Key'>
+          <shadow type='math_number'>
+            <field name='NUM'>2</field>
+          </shadow>
+        </value>
+        <value name='val_Value'>
+          <shadow type='math_number'>
+            <field name='NUM'>20</field>
+          </shadow>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type='text_print'>
+        <value name='TEXT'>
+          <block type='api_DataKPI11_AddManager__userId__POST'>
+            <value name='val_userId'>
+              <shadow type='text'>
+                <field name='TEXT'>userAndrei</field>
+              </shadow>
+            </value>
+            <value name='val_manager'>
+              <shadow type='TestWEBAPI_DAL_KVP'></shadow>
+              <block type='variables_get'>
+                <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+</xml>";
+
     }
 }

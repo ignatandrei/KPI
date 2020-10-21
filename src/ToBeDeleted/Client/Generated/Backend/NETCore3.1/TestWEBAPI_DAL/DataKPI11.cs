@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TestWebAPI_BL;
 
 namespace TestWEBAPI_DAL
 {
@@ -39,4 +40,10 @@ namespace TestWEBAPI_DAL
 
         }
    
+
+    public class KPI11ShowData
+    {
+        public dboAssVA AssVA { get; set; }
+        public decimal Value { get; set; }
+    }
 }

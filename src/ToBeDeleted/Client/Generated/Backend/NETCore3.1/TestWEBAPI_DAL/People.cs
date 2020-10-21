@@ -87,7 +87,7 @@ namespace TestWEBAPI_DAL
             }
             return ret.ToArray();
         }
-        public async Task<string> GetDataKP11(DataKPI11 data)
+        public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data)
         {
             //var idClients = new List<long>();
             //if (data.Categories?.Length > 0)
@@ -154,16 +154,65 @@ namespace TestWEBAPI_DAL
                                 idAssVA.AddRange(ids);
                             }
                             break;
+                        case 2:
+                            {
+                                var idsM1 = await dboAssVA
+                                    .Where(it => it.idmanager != null && val.Contains(it.idmanager.Value))
+                                    .Select(it => it.idassva)
+                                    .ToArrayAsync();
+
+                                var ids = await dboAssVA
+                                    .Where(it => it.idmanager != null && idsM1.Contains(it.idmanager.Value))
+                                    .Select(it => it.idassva)
+                                    .ToArrayAsync();
+
+                                idAssVA.AddRange(ids);
+                                idAssVA.AddRange(ids);
+                            }
+                            break;
+                    
                         default:
                             throw new ArgumentException($"cannot have key {item.Key} for clients dictionary");
                     }
                 }
             }
-            var idToCalculus = dboAssVAClientsCounties
+            var idAssVAClientsCounties = await dboAssVAClientsCounties
                 .Where(it => idAssVA.Contains(it.idassva))
-                .Select(it => it.idassvaclientscounties);
+                .Select(it =>new { it.idassva,  it.idassvaclientscounties })
+                .ToArrayAsync()
+                ;
 
+            var idass = idAssVAClientsCounties.Select(it => it.idassva).Distinct().ToArray();
+            var idassvaclientscounties= idAssVAClientsCounties.Select(it => it.idassvaclientscounties).Distinct().ToArray(); 
 
+            var managers = await dboAssVA
+                .Where(it => idass.Contains(it.idassva))
+                .Select(it=> new { it.idassva, it.idmanager})
+                .ToArrayAsync();
+
+            var values = await dboACTPL
+                    .Where(it => idassvaclientscounties.Contains(it.idassvaclientscounties))
+                    .Select(it => new { it.idassvaclientscounties, it.actual })
+                    .ToArrayAsync();
+            //TODO: actual
+
+            var ret = new List<KPI11ShowData>();
+            foreach(var item in managers)
+            {
+                KPI11ShowData retItem = new KPI11ShowData();
+                retItem.AssVA = await dboAssVA.FirstOrDefaultAsync(it => it.idassva == item.idassva);
+                var idAssVAClientsCountiesItem = idAssVAClientsCounties
+                        .Where(it => it.idassva == item.idassva)
+                        .Select(it=>it.idassvaclientscounties)
+                        .ToArray();
+                retItem.Value = values
+                    .Where(it => idAssVAClientsCountiesItem.Contains(it.idassvaclientscounties))
+                    .Select(it=>it.actual)
+                    .Sum();
+                ret.Add(retItem);
+                //retItem.Value = values.Where(it=>it.idassvaclientscounties == item.id)
+            }
+            return ret.ToArray();
         }
     }
 }
