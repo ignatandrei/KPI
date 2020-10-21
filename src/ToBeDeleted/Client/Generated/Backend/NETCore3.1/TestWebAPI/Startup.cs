@@ -164,7 +164,7 @@ namespace TestWebAPI
   <variables>
     <variable id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</variable>
   </variables>
-  <block type='variables_set' x='96' y='135'>
+  <block type='variables_set' x='215' y='173'>
     <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
     <value name='VALUE'>
       <block type='TestWEBAPI_DAL_KVP'>
@@ -197,6 +197,19 @@ namespace TestWebAPI
             </value>
           </block>
         </value>
+        <next>
+          <block type='text_print'>
+            <value name='TEXT'>
+              <block type='api_DataKPI11_GetData__userId__GET'>
+                <value name='val_userId'>
+                  <shadow type='text'>
+                    <field name='TEXT'>userAndrei</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+          </block>
+        </next>
       </block>
     </next>
   </block>

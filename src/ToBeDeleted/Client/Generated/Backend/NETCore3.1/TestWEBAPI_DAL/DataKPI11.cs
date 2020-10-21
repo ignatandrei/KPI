@@ -8,29 +8,29 @@ namespace TestWEBAPI_DAL
         {
             public DataKPI11()
             {
-                RegionIds = new Dictionary<int, List<long>>();
-                CategoryIds = new Dictionary<int, List<long>>();
-                ManagerIds = new Dictionary<int, List<long>>();
+                RegionIds = new Dictionary<int, HashSet<long>>();
+                CategoryIds = new Dictionary<int, HashSet<long>>();
+                ManagerIds = new Dictionary<int, HashSet<long>>();
             }
-            public Dictionary<int, List<long>> RegionIds;
-            public Dictionary<int, List<long>> CategoryIds;
-            public Dictionary<int, List<long>> ManagerIds;
+            public Dictionary<int, HashSet<long>> RegionIds;
+            public Dictionary<int, HashSet<long>> CategoryIds;
+            public Dictionary<int, HashSet<long>> ManagerIds;
 
-            public KeyValuePair<int, List<long>>[] Regions
+            public KeyValuePair<int, HashSet<long>>[] Regions
             {
                 get
                 {
                     return RegionIds.Select(it => it).ToArray();
                 }
             }
-            public KeyValuePair<int, List<long>>[] Categories
+            public KeyValuePair<int, HashSet<long>>[] Categories
             {
                 get
                 {
                     return CategoryIds.Select(it => it).ToArray();
                 }
             }
-            public KeyValuePair<int, List<long>>[] Managers
+            public KeyValuePair<int, HashSet<long>>[] Managers
             {
                 get
                 {

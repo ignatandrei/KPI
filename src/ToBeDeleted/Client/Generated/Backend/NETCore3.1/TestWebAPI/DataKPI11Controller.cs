@@ -16,7 +16,7 @@ namespace TestWebAPI
     {
         static Dictionary<string, DataKPI11> data = new Dictionary<string, DataKPI11>();
         [HttpGet]
-        public DataKPI11 GetActualData(string userId)
+        public DataKPI11 GetActualFiltersForUser(string userId)
         {
             if (!data.ContainsKey(userId))
                 data.Add(userId, new DataKPI11());
@@ -36,10 +36,10 @@ namespace TestWebAPI
         [HttpPost("{userId}")]
         public DataKPI11 AddRegion([FromRoute]string userId, [FromBody] KVP region)
         {
-            var d = GetActualData(userId);
+            var d = GetActualFiltersForUser(userId);
             if (!d.RegionIds.ContainsKey(region.Key))
             {
-                d.RegionIds.Add(region.Key, new List<long>());
+                d.RegionIds.Add(region.Key, new HashSet<long>());
             }
             var l = d.RegionIds[region.Key];
             if (region.Value > 0)
@@ -57,10 +57,10 @@ namespace TestWebAPI
         public DataKPI11 AddCategory([FromRoute] string userId, [FromBody] KVP category)
         {
             
-            var d = GetActualData(userId);
+            var d = GetActualFiltersForUser(userId);
             if (!d.CategoryIds.ContainsKey(category.Key))
             {
-                d.CategoryIds.Add(category.Key, new List<long>());
+                d.CategoryIds.Add(category.Key, new HashSet<long>());
             }
             var l = d.CategoryIds[category.Key];
             if (category.Value > 0)
@@ -76,10 +76,10 @@ namespace TestWebAPI
         [HttpPost("{userId}")]
         public DataKPI11 AddManager([FromRoute] string userId, [FromBody] KVP manager)
         {
-            var d = GetActualData(userId);
+            var d = GetActualFiltersForUser(userId);
             if (!d.ManagerIds.ContainsKey(manager.Key))
             {
-                d.ManagerIds.Add(manager.Key, new List<long>());
+                d.ManagerIds.Add(manager.Key, new HashSet<long>());
             }
             var l = d.ManagerIds[manager.Key];
             if (manager.Value > 0)
@@ -97,7 +97,7 @@ namespace TestWebAPI
         [HttpGet("{userId}")]
         public Task<KPI11ShowData[]> GetData([FromRoute] string userId, [FromServices]DatabaseContext dc)
         {
-            var d = GetActualData(userId);
+            var d = this.GetActualFiltersForUser(userId);
             return dc.GetDataKP11(d);
         }
     }

@@ -249,9 +249,9 @@ INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) 
 GO
 INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'AR', 3, N'Arad', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'Arges', 4, N'AG', 2)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'AG', 4, N'Arges', 2)
 GO
-INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'Bacau', 5, N'BC', 2)
+INSERT [dbo].[County] ([ShortNameCounty], [IDCounty], [NameCounty], [IDRegion]) VALUES (N'BC', 5, N'Bacau', 2)
 GO
 SET IDENTITY_INSERT [dbo].[County] OFF
 GO
@@ -361,27 +361,27 @@ GO
 GO
 SET IDENTITY_INSERT [dbo].[AssVAClientsCounties] ON 
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (1, 1, 8)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (1, 1, 1)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (2, 2, 8)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (2, 2, 2)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (3, 3, 8)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (3, 3, 3)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (4, 4, 9)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (4, 4, 4)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (5, 5, 9)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (5, 5, 5)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (6, 6, 9)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (6, 6, 6)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (7, 7, 10)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (7, 7, 7)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (8, 8, 10)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (8, 8, 1)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (9, 9, 10)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (9, 9, 2)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (10, 10, 10)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (10, 10, 3)
 GO
-INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (11, 11, 10)
+INSERT [dbo].[AssVAClientsCounties] ([IDAssVAClientsCounties], [IDClientsCounties], [IDAssVA]) VALUES (11, 11, 4)
 GO
 SET IDENTITY_INSERT [dbo].[AssVAClientsCounties] OFF
 GO

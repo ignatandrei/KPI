@@ -176,6 +176,7 @@ namespace TestWEBAPI_DAL
                     }
                 }
             }
+            idAssVA = idAssVA.Distinct().ToList();
             var idAssVAClientsCounties = await dboAssVAClientsCounties
                 .Where(it => idAssVA.Contains(it.idassva))
                 .Select(it =>new { it.idassva,  it.idassvaclientscounties })
