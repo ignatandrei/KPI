@@ -160,58 +160,59 @@ namespace TestWebAPI
             context.Database.EnsureCreated();
         }
 
-        private string myStartBlocks = @"<xml xmlns='https://developers.google.com/blockly/xml'>
+        private string myStartBlocks = @"
+<xml xmlns='https://developers.google.com/blockly/xml'>
   <variables>
     <variable id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</variable>
   </variables>
-  <block type='variables_set' x='-162' y='198'>
-    <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
-    <value name='VALUE'>
-      <block type='TestWEBAPI_DAL_KVP'>
-        <value name='val_Key'>
-          <shadow type='math_number'>
-            <field name='NUM'>2</field>
-          </shadow>
-        </value>
-        <value name='val_Value'>
-          <shadow type='math_number'>
-            <field name='NUM'>20</field>
+  <block type='text_print' x='-170' y='141'>
+    <value name='TEXT'>
+      <block type='api_DataKPI11_CleanFiltersForUser_userId_GET'>
+        <value name='val_userId'>
+          <shadow type='text'>
+            <field name='TEXT'>userAndrei</field>
           </shadow>
         </value>
       </block>
     </value>
     <next>
-      <block type='text_print'>
-        <value name='TEXT'>
-          <block type='api_DataKPI11_AddManager__userId__POST'>
-            <value name='val_userId'>
-              <shadow type='text'>
-                <field name='TEXT'>userAndrei</field>
+      <block type='variables_set'>
+        <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
+        <value name='VALUE'>
+          <block type='TestWEBAPI_DAL_KVP'>
+            <value name='val_Key'>
+              <shadow type='math_number'>
+                <field name='NUM'>2</field>
               </shadow>
             </value>
-            <value name='val_manager'>
-              <shadow type='TestWEBAPI_DAL_KVP'></shadow>
-              <block type='variables_get'>
-                <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
-              </block>
+            <value name='val_Value'>
+              <shadow type='math_number'>
+                <field name='NUM'>20</field>
+              </shadow>
             </value>
           </block>
         </value>
         <next>
           <block type='text_print'>
             <value name='TEXT'>
-              <block type='api_DataKPI11_GetData__userId__GET'>
+              <block type='api_DataKPI11_AddManager__userId__POST'>
                 <value name='val_userId'>
                   <shadow type='text'>
                     <field name='TEXT'>userAndrei</field>
                   </shadow>
+                </value>
+                <value name='val_manager'>
+                  <shadow type='TestWEBAPI_DAL_KVP'></shadow>
+                  <block type='variables_get'>
+                    <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
+                  </block>
                 </value>
               </block>
             </value>
             <next>
               <block type='text_print'>
                 <value name='TEXT'>
-                  <block type='api_DataKPI11_CleanFiltersForUser_userId_GET'>
+                  <block type='api_DataKPI11_GetData__userId__GET'>
                     <value name='val_userId'>
                       <shadow type='text'>
                         <field name='TEXT'>userAndrei</field>
@@ -220,50 +221,63 @@ namespace TestWebAPI
                   </block>
                 </value>
                 <next>
-                  <block type='variables_set'>
-                    <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
-                    <value name='VALUE'>
-                      <block type='TestWEBAPI_DAL_KVP'>
-                        <value name='val_Key'>
-                          <shadow type='math_number'>
-                            <field name='NUM'>1</field>
-                          </shadow>
-                        </value>
-                        <value name='val_Value'>
-                          <shadow type='math_number'>
-                            <field name='NUM'>8</field>
+                  <block type='text_print'>
+                    <value name='TEXT'>
+                      <block type='api_DataKPI11_CleanFiltersForUser_userId_GET'>
+                        <value name='val_userId'>
+                          <shadow type='text'>
+                            <field name='TEXT'>userAndrei</field>
                           </shadow>
                         </value>
                       </block>
                     </value>
                     <next>
-                      <block type='text_print'>
-                        <value name='TEXT'>
-                          <block type='api_DataKPI11_AddManager__userId__POST'>
-                            <value name='val_userId'>
-                              <shadow type='text'>
-                                <field name='TEXT'>userAndrei</field>
+                      <block type='variables_set'>
+                        <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
+                        <value name='VALUE'>
+                          <block type='TestWEBAPI_DAL_KVP'>
+                            <value name='val_Key'>
+                              <shadow type='math_number'>
+                                <field name='NUM'>1</field>
                               </shadow>
                             </value>
-                            <value name='val_manager'>
-                              <shadow type='TestWEBAPI_DAL_KVP'></shadow>
-                              <block type='variables_get'>
-                                <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
-                              </block>
+                            <value name='val_Value'>
+                              <shadow type='math_number'>
+                                <field name='NUM'>8</field>
+                              </shadow>
                             </value>
                           </block>
                         </value>
                         <next>
                           <block type='text_print'>
                             <value name='TEXT'>
-                              <block type='api_DataKPI11_GetData__userId__GET'>
+                              <block type='api_DataKPI11_AddManager__userId__POST'>
                                 <value name='val_userId'>
                                   <shadow type='text'>
                                     <field name='TEXT'>userAndrei</field>
                                   </shadow>
                                 </value>
+                                <value name='val_manager'>
+                                  <shadow type='TestWEBAPI_DAL_KVP'></shadow>
+                                  <block type='variables_get'>
+                                    <field name='VAR' id='zS0@6uxq]2#NZ3sqk]8]'>var_KVP</field>
+                                  </block>
+                                </value>
                               </block>
                             </value>
+                            <next>
+                              <block type='text_print'>
+                                <value name='TEXT'>
+                                  <block type='api_DataKPI11_GetData__userId__GET'>
+                                    <value name='val_userId'>
+                                      <shadow type='text'>
+                                        <field name='TEXT'>userAndrei</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
                           </block>
                         </next>
                       </block>
@@ -278,6 +292,7 @@ namespace TestWebAPI
     </next>
   </block>
 </xml>
+
 ";
 
     }

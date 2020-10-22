@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using TestWebAPI_BL;
@@ -128,6 +129,7 @@ namespace TestWEBAPI_DAL
             //}
 
             var idAssVA = new List<long>();
+            var managers = new Dictionary<long, List<long>>();
             if (data.Managers?.Length > 0)
             {
                 foreach (var item in data.Managers)
@@ -148,26 +150,45 @@ namespace TestWEBAPI_DAL
                                 //TODO: make it recursive
                                 var ids = await dboAssVA
                                     .Where(it => it.idmanager != null && val.Contains(it.idmanager.Value))
-                                    .Select(it => it.idassva)
+                                    .Select(it => new { it.idassva, it.idmanager })
                                     .ToArrayAsync();
 
-                                idAssVA.AddRange(ids);
+                                foreach (var m in ids)
+                                {
+                                    var idM = m.idassva;
+                                    if (!managers.ContainsKey(idM))
+                                    {
+                                        managers.Add(idM, new List<long>());
+                                    }
+                                    managers[idM].Add(m.idassva);
+                                    idAssVA.Add(m.idassva);
+                                }
+                                
                             }
                             break;
                         case 2:
                             {
-                                var idsM1 = await dboAssVA
+                                var idsM2 = await dboAssVA
                                     .Where(it => it.idmanager != null && val.Contains(it.idmanager.Value))
-                                    .Select(it => it.idassva)
+                                    .Select(it => new { it.idassva, it.idmanager })
                                     .ToArrayAsync();
 
-                                var ids = await dboAssVA
-                                    .Where(it => it.idmanager != null && idsM1.Contains(it.idmanager.Value))
-                                    .Select(it => it.idassva)
-                                    .ToArrayAsync();
+                                foreach (var m in idsM2)
+                                {
+                                    var idM = m.idassva;
+                                    if (!managers.ContainsKey(idM))
+                                    {
+                                        managers.Add(idM, new List<long>());
+                                    }
+                                    var idAss = await dboAssVA
+                                        .Where(it => it.idmanager == idM)
+                                        .Select(it=>it.idassva)
+                                        .ToArrayAsync();
+                                    managers[idM].AddRange(idAss);
+                                    idAssVA.AddRange(idAss);
+                                }
 
-                                idAssVA.AddRange(ids);
-                                idAssVA.AddRange(ids);
+                                
                             }
                             break;
                     
@@ -186,11 +207,7 @@ namespace TestWEBAPI_DAL
             var idass = idAssVAClientsCounties.Select(it => it.idassva).Distinct().ToArray();
             var idassvaclientscounties= idAssVAClientsCounties.Select(it => it.idassvaclientscounties).Distinct().ToArray(); 
 
-            var managers = await dboAssVA
-                .Where(it => idass.Contains(it.idassva))
-                .Select(it=> new { it.idassva, it.idmanager})
-                .ToArrayAsync();
-
+            
             var values = await dboACTPL
                     .Where(it => idassvaclientscounties.Contains(it.idassvaclientscounties))
                     .Select(it => new { it.idassvaclientscounties, it.actual })
@@ -200,10 +217,11 @@ namespace TestWEBAPI_DAL
             var ret = new List<KPI11ShowData>();
             foreach(var item in managers)
             {
+                var arrIDAssVA = item.Value.ToArray();
                 KPI11ShowData retItem = new KPI11ShowData();
-                retItem.AssVA = await dboAssVA.FirstOrDefaultAsync(it => it.idassva == item.idassva);
+                retItem.AssVA = await dboAssVA.FirstOrDefaultAsync(it => it.idassva == item.Key);
                 var idAssVAClientsCountiesItem = idAssVAClientsCounties
-                        .Where(it => it.idassva == item.idassva)
+                        .Where(it => arrIDAssVA.Contains( it.idassva  ))
                         .Select(it=>it.idassvaclientscounties)
                         .ToArray();
                 retItem.Value = values
