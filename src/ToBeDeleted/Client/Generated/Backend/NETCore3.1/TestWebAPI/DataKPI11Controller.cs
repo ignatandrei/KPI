@@ -24,6 +24,13 @@ namespace TestWebAPI
             return data[userId];
             
         }
+        public DataKPI11 CleanFiltersForUser(string userId)
+        {
+            if (data.ContainsKey(userId))
+                data.Remove(userId);
+
+            return GetActualFiltersForUser(userId);
+        }
         [HttpGet("{key}/{value}")]
         public KVP GetKVP(int key,int value)
         {
