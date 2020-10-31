@@ -1,3 +1,23 @@
+DROP VIEW [dbo].[vwKPI11Data]
+GO
+
+/****** Object:  View [dbo].[vwKPI11Data]    Script Date: 10/31/2020 9:00:18 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[vwKPI11Data]
+AS
+SELECT dbo.ACTPL.IDACTPL, dbo.ACTPL.IDAssVAClientsCounties, dbo.ACTPL.Actual, dbo.ACTPL.[Plan], dbo.AssVAClientsCounties.IDAssVA, dbo.Clients.IDClient
+FROM  dbo.ClientsCounties INNER JOIN
+         dbo.Clients ON dbo.ClientsCounties.IDClient = dbo.Clients.IDClient INNER JOIN
+         dbo.ACTPL INNER JOIN
+         dbo.AssVAClientsCounties ON dbo.ACTPL.IDAssVAClientsCounties = dbo.AssVAClientsCounties.IDAssVAClientsCounties ON dbo.ClientsCounties.IDClientsCounties = dbo.AssVAClientsCounties.IDClientsCounties
+GO
+
+
 DROP TABLE [dbo].[KPI11Managers]
 GO
 
@@ -51,6 +71,15 @@ BEGIN
 declare @year int, @month int
 set @year = Year(getdate())
 set @month = MONTH(getdate())
+
+declare @clientsId table(Client int)
+if(len(trim(@clients)))>0
+insert into @clientsId (Client)
+select * from String_Split(@clients,',')
+else
+insert into @clientsId (Client)
+select IDClient from Clients
+
 
 delete from KPI11Managers  where @userId = UserId
 
@@ -108,11 +137,15 @@ end
 --where c.Year =Year and c.Month <@Month
 --group by IDClient, c.IDAssVA,IDCounty, m.IDManager
 
-
+select  kpi.IDAssVA,m.IDManager, sum([Plan]) as PlanYTD,sum(Actual) as ActualYTD 
+from vwKPI11Data kpi
+inner join KPI11Managers m on kpi.IDAssVA = m.IDAssVA and m.UserId= @userId
+inner join @clientsId c on kpi.IDClient= c.Client
+group by  kpi.IDAssVA,m.IDManager
 
 END
 GO
 
-exec createKPI11 'a','20,19',''
-select * from KPI11Managers
-select * from KPI11Clients
+exec createKPI11 'a','20,21',''
+--select * from KPI11Managers
+--select * from KPI11Clients
