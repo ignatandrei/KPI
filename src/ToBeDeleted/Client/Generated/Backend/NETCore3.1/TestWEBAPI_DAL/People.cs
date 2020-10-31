@@ -20,11 +20,24 @@ namespace TestWEBAPI_DAL
             {
                 var p = new People();
                 p.Manager = item;
+                p.Manager.idmanager = 0;
                 var next = await FindTeam(p);
                 p.Team = next;
                 ret.Add(p);
             }
-            return ret.ToArray();
+            // add fake
+            var fake = new People();
+            fake.Manager = new dboAssVA()
+            {
+                idassva = 0,
+                idmanager = 0,
+                nameassva = "DO NOT DISPLAY",
+                shortnameassva = "DO NOT DISPLAY"
+
+            };
+            fake.Team = ret.ToArray();
+
+            return new[] { fake };
 
         }
         public async Task<RegionData[]> GetHierarchicalRegion()

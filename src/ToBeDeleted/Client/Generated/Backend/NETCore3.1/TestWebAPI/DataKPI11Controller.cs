@@ -24,6 +24,7 @@ namespace TestWebAPI
             return data[userId];
             
         }
+        [HttpGet]
         public DataKPI11 CleanFiltersForUser(string userId)
         {
             if (data.ContainsKey(userId))
