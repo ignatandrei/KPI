@@ -304,9 +304,11 @@ GO
 GO
 SET IDENTITY_INSERT [dbo].[AssVA] ON 
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (20, N'RG1', N'Reg Manager1', NULL)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (0, N'FK', N'FakeManager', NULL)
+
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (20, N'RG1', N'Reg Manager1', 0)
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (21, N'RG2', N'Reg Manager2', NULL)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (21, N'RG2', N'Reg Manager2', 0)
 
 GO
 INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (8, N'IW', N'Isaias Worrell', 20)
