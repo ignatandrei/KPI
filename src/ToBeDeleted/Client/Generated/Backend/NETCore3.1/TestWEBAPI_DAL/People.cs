@@ -66,7 +66,11 @@ namespace TestWEBAPI_DAL
             foreach (var item in cnt)
             {
                 var c = new ClientData();
-                c.Channel = item;
+                c.MainClient = new dboClients();
+                c.MainClient.idclient = item.idcategory;
+                c.MainClient.nameclient = item.namecategory;
+                c.MainClient.shortnameclient = item.shortnamecategory;
+
                 var idCLients = await this.dboClientsCategory
                         .Where(it => it.idcategory == item.idcategory)
                         .Select(it => it.idclient)
@@ -74,12 +78,36 @@ namespace TestWEBAPI_DAL
 
                 if (idCLients.Length > 0)
                 {
-                    c.Clients = await this.dboClients.Where(it => idCLients.Contains(it.idclient)).ToArrayAsync();
+                    var items = await this.dboClients.Where(it => idCLients.Contains(it.idclient)).ToArrayAsync();
+                    c.SubClients = items.Select(it => new ClientData()
+                    {
+                        MainClient =new dboClients()
+                        {
+                            idclient = it.idclient,
+                            nameclient=it.nameclient,
+                            shortnameclient=it.shortnameclient
+                        }
+                    }).ToArray();
                 }
                 ret.Add(c);
 
+
             }
-            return ret.ToArray();
+
+
+            // add fake
+            var fake = new ClientData();
+            fake.MainClient = new dboClients()
+            {
+                idclient = 0,
+
+                nameclient = "DO NOT DISPLAY",
+                shortnameclient = "DO NOT DISPLAY"
+
+            };
+            fake.SubClients = ret.ToArray();
+            return new[] { fake };
+            
 
         }
 

@@ -26,11 +26,11 @@ namespace TestWebAPI
         {
             return await dc.GetHierarchicalPeople();
         }
-        [HttpGet]
-        public async Task<RegionData[]> Regions()
-        {
-            return await dc.GetHierarchicalRegion();
-        }
+        //[HttpGet]
+        //public async Task<RegionData[]> Regions()
+        //{
+        //    return await dc.GetHierarchicalRegion();
+        //}
         [HttpGet]
         public async Task<ClientData[]> Clients()
         {

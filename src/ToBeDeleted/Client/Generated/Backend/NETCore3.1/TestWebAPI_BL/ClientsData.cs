@@ -2,14 +2,14 @@
 {
     public class ClientData
     {
-        public dboCategory  Channel { get; set; }
-        public dboClients[] Clients { get; set; }
+        public dboClients  MainClient { get; set; }
+        public ClientData[] SubClients { get; set; }
 
-        public int NumberClients
+        public int NumberSubClients
         {
             get
             {
-                return Clients?.Length ?? 0;
+                return SubClients?.Length ?? 0;
             }
         }
     }
