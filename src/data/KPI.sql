@@ -137,15 +137,17 @@ end
 --where c.Year =Year and c.Month <@Month
 --group by IDClient, c.IDAssVA,IDCounty, m.IDManager
 
-select  kpi.IDAssVA,m.IDManager, sum([Plan]) as PlanYTD,sum(Actual) as ActualYTD 
+select  m.IDManager, sum([Plan]) as PlanYTD,sum(Actual) as ActualYTD 
 from vwKPI11Data kpi
 inner join KPI11Managers m on kpi.IDAssVA = m.IDAssVA and m.UserId= @userId
 inner join @clientsId c on kpi.IDClient= c.Client
-group by  kpi.IDAssVA,m.IDManager
+group by  m.IDManager
 
 END
 GO
 
-exec createKPI11 'a','20,21',''
+exec createKPI11 'a','21,20',''
+exec createKPI11 'a','0',''
+
 --select * from KPI11Managers
 --select * from KPI11Clients

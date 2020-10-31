@@ -16,7 +16,7 @@ namespace TestWEBAPI_DAL
         : base(options)
         {
         }
-
+            
             public virtual DbSet<dboACTPL> dboACTPL{ get; set; }
             
             public virtual DbSet<dboAssVA> dboAssVA{ get; set; }

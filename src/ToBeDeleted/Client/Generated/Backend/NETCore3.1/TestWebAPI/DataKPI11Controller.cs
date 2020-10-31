@@ -107,7 +107,7 @@ namespace TestWebAPI
         public Task<KPI11ShowData[]> GetData([FromRoute] string userId, [FromServices]DatabaseContext dc)
         {
             var d = this.GetActualFiltersForUser(userId);
-            return dc.GetDataKP11(d);
+            return dc.GetDataKP11(d,userId);
         }
     }
 }

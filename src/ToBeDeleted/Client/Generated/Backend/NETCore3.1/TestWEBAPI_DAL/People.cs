@@ -38,7 +38,7 @@ namespace TestWEBAPI_DAL
             //fake.Team = ret.ToArray();
 
             //return new[] { fake };
-            return ret;
+            return ret.ToArray();
 
         }
         public async Task<RegionData[]> GetHierarchicalRegion()
@@ -132,11 +132,12 @@ namespace TestWEBAPI_DAL
         }
         public virtual DbSet<createKPI11> createKPI11 { get; set; }
 
-        public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data)
+        public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data,string userId)
         {
 
-            var idManagers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
-            var createKPI11= this.createKPI11.FromSqlInterpolated($"exec createKPI11 {idManagers}, ''");
+            var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
+            string Clients = "";
+            var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId}, {Managers}, {Clients}").ToArrayAsync();
             var ret = createKPI11.Select(it => new KPI11ShowData()
             {
                 Value = 0,
