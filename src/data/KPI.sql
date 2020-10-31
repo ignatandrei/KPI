@@ -1,4 +1,4 @@
-DROP TABLE [dbo].[KPI11]
+DROP TABLE [dbo].[KPI11Managers]
 GO
 
 /****** Object:  Table [dbo].[KPI11]    Script Date: 9/26/2020 11:43:40 AM ******/
@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[KPI11](
+CREATE TABLE [dbo].[KPI11Managers](
 	[UserId] nvarchar(1000) not null,
 --	[IDClient] [bigint] NULL,
 	[IDAssVA] [bigint] NOT NULL,
@@ -22,6 +22,21 @@ CREATE TABLE [dbo].[KPI11](
 ) ON [PRIMARY]
 
 go
+DROP TABLE [dbo].[KPI11Clients]
+GO
+
+/****** Object:  Table [dbo].[KPI11]    Script Date: 9/26/2020 11:43:40 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[KPI11Clients](
+	[UserId] nvarchar(1000) not null,
+	[IDClient] [bigint] NOT NULL,
+	[IDRegion] [bigint] NULL,
+) ON [PRIMARY]
 
 drop procedure createKPI11
 --DROP TABLE KPI11
@@ -37,7 +52,7 @@ declare @year int, @month int
 set @year = Year(getdate())
 set @month = MONTH(getdate())
 
-delete from KPI11  where @userId = UserId
+delete from KPI11Managers  where @userId = UserId
 
 declare @managersID table(id int identity, ManagerVar int)
 insert into @managersID(ManagerVar)
@@ -68,7 +83,7 @@ select @managerVar= ManagerVar from @managersID where id=@I
             ON a.IDManager =c.IDAssVA 
 )
 
-INSERT INTO [KPI11]
+INSERT INTO [KPI11Managers]
            (
 		   [UserId]
            ,[IDAssVA]
@@ -99,4 +114,5 @@ END
 GO
 
 exec createKPI11 'a','20,19',''
-select * from KPI11 
+select * from KPI11Managers
+select * from KPI11Clients
