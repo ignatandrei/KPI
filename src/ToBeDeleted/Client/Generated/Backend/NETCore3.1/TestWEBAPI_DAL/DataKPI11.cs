@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using TestWebAPI_BL;
 
@@ -40,7 +41,14 @@ namespace TestWEBAPI_DAL
 
         }
    
+    public class createKPI11
+    {
+        [Key]
+        public long IDManager { get; set; }
 
+        public decimal PlanYTD { get; set; }
+        public decimal ActualYTD { get; set; }
+    }
     public class KPI11ShowData
     {
         public dboAssVA AssVA { get; set; }
