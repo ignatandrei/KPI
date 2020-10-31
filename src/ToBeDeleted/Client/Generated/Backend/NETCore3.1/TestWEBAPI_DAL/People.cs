@@ -131,44 +131,6 @@ namespace TestWEBAPI_DAL
         }
         public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data)
         {
-            //var idClients = new List<long>();
-            //if (data.Categories?.Length > 0)
-            //{
-            //    foreach (var item in data.Categories)
-            //    {
-            //        switch (item.Key)
-            //        {
-            //            case 0://category
-            //                {
-            //                    var val = item.Value?.ToArray();
-            //                    if (val?.Length > 0)
-            //                    {
-            //                        var clients = await dboClientsCategory
-            //                           .Where(it => val.Contains(it.idcategory))
-            //                            .Select(it => it.idclient)
-            //                            .ToArrayAsync();
-
-            //                        if (clients.Length > 0)
-            //                            idClients.AddRange(clients);
-            //                    }
-            //                }
-            //                break;
-            //            case 1: //clients
-            //                {
-            //                    var val = item.Value?.ToArray();
-            //                    if (val?.Length > 0)
-            //                    {
-
-            //                        idClients.AddRange(val);
-            //                    }
-            //                }
-            //                break;
-            //            default:
-            //                throw new ArgumentException($"cannot have key {item.Key} for clients dictionary");
-            //        }
-            //    }
-            //}
-
             var idAssVA = new List<long>();
             var managers = new Dictionary<long, List<long>>();
             if (data.Managers?.Length > 0)

@@ -41,43 +41,44 @@ namespace TestWebAPI
                 Value = value
             };
         }
-        [HttpPost("{userId}")]
-        public DataKPI11 AddRegion([FromRoute]string userId, [FromBody] KVP region)
-        {
-            var d = GetActualFiltersForUser(userId);
-            if (!d.RegionIds.ContainsKey(region.Key))
-            {
-                d.RegionIds.Add(region.Key, new HashSet<long>());
-            }
-            var l = d.RegionIds[region.Key];
-            if (region.Value > 0)
-            {
-                l.Add(region.Value);
-            }
-            else
-            {
-                l.Remove(-region.Value);
-            }
-            return d;            
-        }
+
+        //[HttpPost("{userId}")]
+        //public DataKPI11 AddRegion([FromRoute]string userId, [FromBody] KVP region)
+        //{
+        //    var d = GetActualFiltersForUser(userId);
+        //    if (!d.RegionIds.ContainsKey(region.Key))
+        //    {
+        //        d.RegionIds.Add(region.Key, new HashSet<long>());
+        //    }
+        //    var l = d.RegionIds[region.Key];
+        //    if (region.Value > 0)
+        //    {
+        //        l.Add(region.Value);
+        //    }
+        //    else
+        //    {
+        //        l.Remove(-region.Value);
+        //    }
+        //    return d;            
+        //}
 
         [HttpPost("{userId}")]
-        public DataKPI11 AddCategory([FromRoute] string userId, [FromBody] KVP category)
+        public DataKPI11 AddClients([FromRoute] string userId, [FromBody] KVP client)
         {
             
             var d = GetActualFiltersForUser(userId);
-            if (!d.CategoryIds.ContainsKey(category.Key))
+            if (!d.Clients.ContainsKey(client.Key))
             {
-                d.CategoryIds.Add(category.Key, new HashSet<long>());
+                d.Clients.Add(client.Key, new HashSet<long>());
             }
-            var l = d.CategoryIds[category.Key];
-            if (category.Value > 0)
+            var l = d.Clients[client.Key];
+            if (client.Value > 0)
             {
-                l.Add(category.Value);
+                l.Add(client.Value);
             }
             else
             {
-                l.Remove(-category.Value);
+                l.Remove(-client.Value);
             }
             return d;
         }
