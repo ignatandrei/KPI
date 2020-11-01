@@ -138,11 +138,27 @@ namespace TestWEBAPI_DAL
                 entity.HasNoKey();                
             });
         }
+        public async Task<int> LevelManager(long id)
+        {
+            //TODO: replace with SP to find max levels down
+            var i = 0;
+            while (true)
+            {
+                var child = await this.dboAssVA.FirstOrDefaultAsync(it => it.idmanager == id);
+                if (child == null) break;
+                id = child.idassva;
+                i++;
+            }
+            return i;
+        }
         public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data,string userId)
         {
             int year = 2020;
             var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
             string Clients = "";
+
+
+
             var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},{year}, {Managers}, {Clients}").ToArrayAsync();
             var ret = createKPI11
                 .Where(it=>it.yearToData==year)

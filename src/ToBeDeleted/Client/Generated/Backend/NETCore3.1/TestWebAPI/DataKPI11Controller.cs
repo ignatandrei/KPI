@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
@@ -83,7 +84,7 @@ namespace TestWebAPI
             return d;
         }
         [HttpPost("{userId}")]
-        public DataKPI11 AddManager([FromRoute] string userId, [FromBody] KVP manager)
+        public async Task<DataKPI11> AddManager([FromRoute] string userId, [FromBody] KVP manager, [FromServices] DatabaseContext dc)
         {
             var d = GetActualFiltersForUser(userId);
             if (!d.ManagerIds.ContainsKey(manager.Key))
@@ -91,6 +92,12 @@ namespace TestWebAPI
                 d.ManagerIds.Add(manager.Key, new HashSet<long>());
             }
             var l = d.ManagerIds[manager.Key];
+            var m = await dc.LevelManager(manager.Value);
+            if(m != manager.Key)
+            {
+                throw new ArgumentException($"manager {manager.Value} has level {m}, not {manager.Key}");
+            }
+
             if (manager.Value > 0)
             {
                 l.Add(manager.Value);
