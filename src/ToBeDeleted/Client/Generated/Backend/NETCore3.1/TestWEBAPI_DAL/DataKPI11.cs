@@ -46,12 +46,16 @@ namespace TestWEBAPI_DAL
         [Key]
         public long IDManager { get; set; }
 
-        public decimal PlanYTD { get; set; }
-        public decimal ActualYTD { get; set; }
+        public decimal? PlanYTD { get; set; }
+        public decimal? ActualYTD { get; set; }
+
+        public decimal? PreviousValueActualYTD { get; set; }
+        public decimal? PreviousValuePlanYTD { get; set; }
     }
     public class KPI11ShowData
     {
         public dboAssVA AssVA { get; set; }
-        public decimal Value { get; set; }
+        public decimal? Value { get; set; }
+        public decimal? PrevYearValue { get; set; }
     }
 }

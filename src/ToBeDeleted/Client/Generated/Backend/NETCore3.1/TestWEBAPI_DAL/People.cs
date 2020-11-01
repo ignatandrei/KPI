@@ -137,10 +137,11 @@ namespace TestWEBAPI_DAL
 
             var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
             string Clients = "";
-            var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId}, {Managers}, {Clients}").ToArrayAsync();
+            var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},2020, {Managers}, {Clients}").ToArrayAsync();
             var ret = createKPI11.Select(it => new KPI11ShowData()
             {
-                Value = 0,
+                Value = it.ActualYTD,
+                PrevYearValue= it.PreviousValueActualYTD ,
                 AssVA = this.dboAssVA.First(a => a.idassva == it.IDManager)
             }).ToArray();
             return ret;
