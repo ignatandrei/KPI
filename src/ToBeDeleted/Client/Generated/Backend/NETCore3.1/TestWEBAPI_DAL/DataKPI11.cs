@@ -43,9 +43,10 @@ namespace TestWEBAPI_DAL
    
     public class createKPI11
     {
-        [Key]
+        
         public long IDManager { get; set; }
 
+        public int yearToData { get; set; }
         public decimal? PlanYTD { get; set; }
         public decimal? ActualYTD { get; set; }
 

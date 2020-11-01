@@ -131,14 +131,22 @@ namespace TestWEBAPI_DAL
             return ret.ToArray();
         }
         public virtual DbSet<createKPI11> createKPI11 { get; set; }
-
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<createKPI11>(entity =>
+            {
+                entity.HasNoKey();                
+            });
+        }
         public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data,string userId)
         {
-
+            int year = 2020;
             var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
             string Clients = "";
-            var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},2020, {Managers}, {Clients}").ToArrayAsync();
-            var ret = createKPI11.Select(it => new KPI11ShowData()
+            var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},{year}, {Managers}, {Clients}").ToArrayAsync();
+            var ret = createKPI11
+                .Where(it=>it.yearToData==year)
+                .Select(it => new KPI11ShowData()
             {
                 Value = it.ActualYTD,
                 PrevYearValue= it.PreviousValueActualYTD ,
