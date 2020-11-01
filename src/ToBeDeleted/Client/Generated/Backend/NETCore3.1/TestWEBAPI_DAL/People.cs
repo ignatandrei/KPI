@@ -140,13 +140,20 @@ namespace TestWEBAPI_DAL
         }
         public async Task<int> LevelManager(long id)
         {
-            //TODO: replace with SP to find max levels down
             var i = 0;
+            var ids = new long[] { id };
+            
             while (true)
             {
-                var child = await this.dboAssVA.FirstOrDefaultAsync(it => it.idmanager == id);
-                if (child == null) break;
-                id = child.idassva;
+
+                var childs = await this.dboAssVA
+                    .Where(it => it.idmanager != null && ids.Contains(it.idmanager.Value))
+                    .Select(it => it.idassva)
+                    .ToArrayAsync();
+                
+                if ((childs?.Length ??0) == 0) break;
+
+                ids = childs;
                 i++;
             }
             return i;
