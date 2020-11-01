@@ -138,6 +138,7 @@ namespace TestWEBAPI_DAL
                 entity.HasNoKey();                
             });
         }
+        
         public async Task<int> LevelManager(long id)
         {
             var i = 0;
@@ -163,8 +164,29 @@ namespace TestWEBAPI_DAL
             int year = 2020;
             var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
             string Clients = "";
+            if ((data.Clients?.Count ?? 0) > 0) {
+                var maxClients = data.Clients.Max(it => it.Key);
+                
+                switch (maxClients)
+                {
 
+                    case 2:
+                        var ids = data.Clients[maxClients].ToArray();
+                        var dataClients = await this.
+                            dboClientsCategory
+                            .Where(it => ids.Contains(it.idcategory))
+                            .Select(it => it.idclient)
+                            .ToArrayAsync();
+                        Clients = string.Join(',', ids);
+                        break;
+                    case 1:
+                        Clients = string.Join(',', data.Clients[maxClients].ToArray());
+                        break;
+                    default:
+                        throw new ArgumentException("no clients defined for " + maxClients);
 
+                }
+            }
 
             var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},{year}, {Managers}, {Clients}").ToArrayAsync();
             var ret = createKPI11

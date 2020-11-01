@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,9 +65,35 @@ namespace TestWebAPI
         //}
 
         [HttpPost("{userId}")]
-        public DataKPI11 AddClients([FromRoute] string userId, [FromBody] KVP client)
+        public async Task< DataKPI11> AddClients([FromRoute] string userId, [FromBody] KVP client, [FromServices] DatabaseContext dc)
         {
-            
+            switch (client.Key)
+            {
+                
+                case 1:
+                    {
+                        var c = await dc.dboClients.FirstOrDefaultAsync(it => it.idclient == client.Value);
+                        if (c == null)
+                        {
+                            throw new ArgumentException($"client {client.Value} not found at level {client.Key}");
+
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        var c = await dc.dboCategory.FirstOrDefaultAsync(it => it.idcategory == client.Value);
+                        if (c == null)
+                        {
+                            throw new ArgumentException($"client {client.Value} not found at level {client.Key}");
+
+                        }
+                    }
+                    break;
+                default:
+                    throw new ArgumentException($"does not exists level {client.Key}");
+            }
+
             var d = GetActualFiltersForUser(userId);
             if (!d.Clients.ContainsKey(client.Key))
             {
