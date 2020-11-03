@@ -169,7 +169,11 @@ namespace TestWEBAPI_DAL
                 
                 switch (maxClients)
                 {
-
+                    case 3:
+                        //top
+                        var allClients = await dboClients.Select(it => it.idclient).ToArrayAsync();
+                        Clients = string.Join(",", allClients);
+                        break;
                     case 2:
                         var ids = data.Clients[maxClients].ToArray();
                         var dataClients = await this.
