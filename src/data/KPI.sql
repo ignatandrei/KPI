@@ -85,7 +85,8 @@ delete from KPI11Managers  where @userId = UserId
 
 declare @managersID table(id int identity, ManagerVar int)
 insert into @managersID(ManagerVar)
-select * from String_Split(@managers,',')
+select a.idassva from String_Split(@managers,',') x
+inner join AssVa a on a.idManager = value 
 
 declare @managerVar int
 DECLARE @I INT, @maxManagers int
