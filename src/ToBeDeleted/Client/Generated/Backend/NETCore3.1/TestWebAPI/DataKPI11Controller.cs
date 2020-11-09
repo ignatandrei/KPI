@@ -90,6 +90,12 @@ namespace TestWebAPI
                         }
                     }
                     break;
+                case 3:
+                    {
+                        if (client.Value != 0)
+                            throw new ArgumentException($"client {client.Value} not found at level {client.Key}");
+                    }
+                    break;
                 default:
                     throw new ArgumentException($"does not exists level {client.Key}");
             }
