@@ -169,8 +169,8 @@ END
 
 GO
 
-exec createKPI11 'a','21,20',''
-exec createKPI11 'a','0',''
+--exec createKPI11 'a','21,20',''
+--exec createKPI11 'a','0',''
 
 --select * from KPI11Managers
 --select * from KPI11Clients

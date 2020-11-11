@@ -69,6 +69,7 @@ namespace TestWEBAPI_DAL
                 var c = new ClientData();
                 c.MainClient = new dboClients();
                 c.MainClient.idclient = item.idcategory;
+                c.MainClient.iduclient = 0;
                 c.MainClient.nameclient = item.namecategory;
                 c.MainClient.shortnameclient = item.shortnamecategory;
 
@@ -85,6 +86,7 @@ namespace TestWEBAPI_DAL
                         MainClient =new dboClients()
                         {
                             idclient = it.idclient,
+                            iduclient= item.idcategory,
                             nameclient=it.nameclient,
                             shortnameclient=it.shortnameclient
                         }
@@ -107,6 +109,7 @@ namespace TestWEBAPI_DAL
 
             };
             fake.SubClients = ret.ToArray();
+            
             return new[] { fake };
             
 
@@ -135,8 +138,9 @@ namespace TestWEBAPI_DAL
         {
             modelBuilder.Entity<createKPI11>(entity =>
             {
-                entity.HasNoKey();                
+                entity.HasNoKey();
             });
+            modelBuilder.Entity<dboClients>().Ignore(it => it.iduclient);
         }
         
         public async Task<int> LevelManager(long id)
