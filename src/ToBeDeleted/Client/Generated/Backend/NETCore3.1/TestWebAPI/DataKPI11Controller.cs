@@ -70,7 +70,7 @@ namespace TestWebAPI
             switch (client.Key)
             {
                 
-                case 1:
+                case 0:
                     {
                         var c = await dc.dboClients.FirstOrDefaultAsync(it => it.idclient == client.Value);
                         if (c == null)
@@ -80,7 +80,7 @@ namespace TestWebAPI
                         }
                     }
                     break;
-                case 2:
+                case 1:
                     {
                         var c = await dc.dboCategory.FirstOrDefaultAsync(it => it.idcategory == client.Value);
                         if (c == null)
@@ -90,7 +90,7 @@ namespace TestWebAPI
                         }
                     }
                     break;
-                case 3:
+                case 2:
                     {
                         if (client.Value != 0)
                             throw new ArgumentException($"client {client.Value} not found at level {client.Key}");
