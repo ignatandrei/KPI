@@ -9,7 +9,8 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="NetCore2Blockly" Version="1.1.2020.17302329" />
+    <PackageReference Include="NetCore2Blockly" Version="1.1.2020.25553965" />
+    <PackageReference Include="NetCore2BlocklyStorage.Sqlite" Version="1.1.2020.25553965" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
 
   </ItemGroup>

@@ -98,6 +98,7 @@ namespace TestWebAPI
                     
                 }
                 );
+            app.UseBlocklySqliteStorage(); 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
 

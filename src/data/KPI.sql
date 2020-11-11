@@ -8,14 +8,25 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+
+/****** Object:  View [dbo].[vwKPI11Data]    Script Date: 11/11/2020 8:45:08 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
 CREATE VIEW [dbo].[vwKPI11Data]
 AS
 SELECT dbo.ACTPL.IDACTPL, dbo.ACTPL.IDAssVAClientsCounties, dbo.ACTPL.Actual, dbo.ACTPL.[Plan], dbo.AssVAClientsCounties.IDAssVA, dbo.Clients.IDClient
+, dbo.ACTPL.Month, dbo.ACTPL.Year
 FROM  dbo.ClientsCounties INNER JOIN
          dbo.Clients ON dbo.ClientsCounties.IDClient = dbo.Clients.IDClient INNER JOIN
          dbo.ACTPL INNER JOIN
          dbo.AssVAClientsCounties ON dbo.ACTPL.IDAssVAClientsCounties = dbo.AssVAClientsCounties.IDAssVAClientsCounties ON dbo.ClientsCounties.IDClientsCounties = dbo.AssVAClientsCounties.IDClientsCounties
 GO
+
 
 
 DROP TABLE [dbo].[KPI11Managers]
@@ -61,24 +72,23 @@ CREATE TABLE [dbo].[KPI11Clients](
 drop procedure createKPI11
 --DROP TABLE KPI11
 go
-CREATE PROCEDURE createKPI11(
+CREATE PROCEDURE [dbo].[createKPI11](
 @userId nvarchar(1000),
-@managers nvarchar(1000), @clients nvarchar(100))
+@year int,
+@managers nvarchar(1000), 
+@clients nvarchar(100)
+)
 AS
 BEGIN
 	SET NOCOUNT ON;
 	
-declare @year int, @month int
-set @year = Year(getdate())
-set @month = MONTH(getdate())
-
 declare @clientsId table(Client int)
 if(len(trim(@clients)))>0
 insert into @clientsId (Client)
 select * from String_Split(@clients,',')
-else
-insert into @clientsId (Client)
-select IDClient from Clients
+--else
+--insert into @clientsId (Client)
+--select IDClient from Clients
 
 
 delete from KPI11Managers  where @userId = UserId
@@ -87,6 +97,8 @@ declare @managersID table(id int identity, ManagerVar int)
 insert into @managersID(ManagerVar)
 select a.idassva from String_Split(@managers,',') x
 inner join AssVa a on a.idManager = value 
+
+
 
 declare @managerVar int
 DECLARE @I INT, @maxManagers int
@@ -138,13 +150,23 @@ end
 --where c.Year =Year and c.Month <@Month
 --group by IDClient, c.IDAssVA,IDCounty, m.IDManager
 
-select  m.IDManager, sum([Plan]) as PlanYTD,sum(Actual) as ActualYTD 
+;with Data(IdManager, yearToData,PlanYTD, ActualYTD ) as
+(select  m.IDManager, kpi.Year
+,sum([Plan]) as PlanYTD
+,sum(Actual) as ActualYTD 
 from vwKPI11Data kpi
 inner join KPI11Managers m on kpi.IDAssVA = m.IDAssVA and m.UserId= @userId
 inner join @clientsId c on kpi.IDClient= c.Client
-group by  m.IDManager
-
+group by  m.IDManager, kpi.Year
+)
+select 
+LAG(ActualYTD) OVER (ORDER BY IDManager, yearToData) PreviousValueActualYTD,
+LAG(PlanYTD) OVER (ORDER BY IDManager, yearToData) PreviousValuePlanYTD,
+--LEAD(Value) OVER (ORDER BY IDManager, yearToData) NextValue,
+* from Data d
+where d.yearToData >=@year-1
 END
+
 GO
 
 exec createKPI11 'a','21,20',''
