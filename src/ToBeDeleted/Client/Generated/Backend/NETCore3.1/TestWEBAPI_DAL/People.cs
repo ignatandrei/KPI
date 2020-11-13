@@ -57,7 +57,8 @@ namespace TestWEBAPI_DAL
             return ret.ToArray();
 
         }
-
+        public static readonly int DiffCategory = 100;
+        public static readonly int DiffClients= 10000;
 
         public async Task<ClientData[]> GetHierarchicalClients()
         {
@@ -67,8 +68,10 @@ namespace TestWEBAPI_DAL
             foreach (var item in cnt)
             {
                 var c = new ClientData();
+                
                 c.MainClient = new dboClients();
-                c.MainClient.idclient = item.idcategory;
+                c.MainClient.MyDepth = 1;
+                c.MainClient.idclient = item.idcategory* DiffCategory;
                 c.MainClient.iduclient = 0;
                 c.MainClient.nameclient = item.namecategory;
                 c.MainClient.shortnameclient = item.shortnamecategory;
@@ -85,8 +88,9 @@ namespace TestWEBAPI_DAL
                     {
                         MainClient =new dboClients()
                         {
-                            idclient = it.idclient,
-                            iduclient= item.idcategory,
+                            MyDepth=0,
+                            idclient = it.idclient* DiffClients,
+                            iduclient= item.idcategory * DiffCategory,
                             nameclient=it.nameclient,
                             shortnameclient=it.shortnameclient
                         }
@@ -102,8 +106,9 @@ namespace TestWEBAPI_DAL
             var fake = new ClientData();
             fake.MainClient = new dboClients()
             {
+                MyDepth=2,
                 idclient = 0,
-
+                iduclient=0,
                 nameclient = "DO NOT DISPLAY",
                 shortnameclient = "DO NOT DISPLAY"
 
@@ -140,7 +145,10 @@ namespace TestWEBAPI_DAL
             {
                 entity.HasNoKey();
             });
-            modelBuilder.Entity<dboClients>().Ignore(it => it.iduclient);
+            modelBuilder.Entity<dboClients>()
+                .Ignore(it => it.iduclient)
+                .Ignore(it=>it.MyDepth)
+                ;
         }
         
         public async Task<int> LevelManager(long id)
@@ -175,20 +183,27 @@ namespace TestWEBAPI_DAL
                 {
                     case 2:
                         //top
-                        var allClients = await dboClients.Select(it => it.idclient).ToArrayAsync();
+                        var allClients = await dboClients.Select(it => it.idclient / DatabaseContext.DiffClients).ToArrayAsync();
                         Clients = string.Join(",", allClients);
                         break;
                     case 1:
-                        var ids = data.Clients[maxClients].ToArray();
-                        var dataClients = await this.
-                            dboClientsCategory
-                            .Where(it => ids.Contains(it.idcategory))
-                            .Select(it => it.idclient)
-                            .ToArrayAsync();
-                        Clients = string.Join(',', ids);
+                        {
+                            var ids = data.Clients[maxClients].ToArray();
+                            ids = ids.Select(it => it / DatabaseContext.DiffCategory).ToArray();
+                            var dataClients = await this.
+                                dboClientsCategory
+                                .Where(it => ids.Contains(it.idcategory))
+                                .Select(it => it.idclient)
+                                .ToArrayAsync();
+                            Clients = string.Join(',', ids);
+                        }
                         break;
                     case 0:
-                        Clients = string.Join(',', data.Clients[maxClients].ToArray());
+                        {
+                            var ids = data.Clients[maxClients].ToArray();
+                            ids = ids.Select(it => it / DatabaseContext.DiffClients).ToArray();
+                            Clients = string.Join(',', data.Clients[maxClients].ToArray());
+                        }
                         break;
                     default:
                         throw new ArgumentException("no clients defined for " + maxClients);

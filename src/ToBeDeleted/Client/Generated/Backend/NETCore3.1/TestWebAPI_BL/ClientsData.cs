@@ -2,6 +2,10 @@
 {
     public class ClientData
     {
+        public ClientData()
+        {
+            SubClients = new ClientData[0];
+        }
         public dboClients  MainClient { get; set; }
         public ClientData[] SubClients { get; set; }
 
