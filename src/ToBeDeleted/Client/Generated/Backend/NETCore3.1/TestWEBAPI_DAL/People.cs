@@ -23,6 +23,9 @@ namespace TestWEBAPI_DAL
                 p.Manager.idmanager = 0;
                 var next = await FindTeam(p);
                 p.Team = next;
+                item.MyDepth = 0;
+                if (next.Length > 0)
+                    item.MyDepth = next.First().Manager.MyDepth + 1;
                 ret.Add(p);
             }
             // add fake
@@ -134,6 +137,11 @@ namespace TestWEBAPI_DAL
                 p.Manager = item;
                 var next = await FindTeam(p);
                 p.Team = next;
+                item.MyDepth = 0;
+                if (next.Length > 0)
+                {
+                    item.MyDepth = next.First().Manager.MyDepth + 1;
+                }
                 ret.Add(p);
             }
             return ret.ToArray();
@@ -148,6 +156,10 @@ namespace TestWEBAPI_DAL
             modelBuilder.Entity<dboClients>()
                 .Ignore(it => it.iduclient)
                 .Ignore(it=>it.MyDepth)
+                ;
+
+            modelBuilder.Entity<dboAssVA>()
+                .Ignore(it => it.MyDepth)
                 ;
         }
         
