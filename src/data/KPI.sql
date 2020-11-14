@@ -116,7 +116,7 @@ select @managerVar= ManagerVar from @managersID where id=@I
 		a.IDAssVA,a.IDManager, a.NameAssVA , cast ('' as nvarchar(100))  Manager
 	 FROM AssVA a
 	 --inner join @managersID on a.IDManager = ManagerVar
-    WHERE idmanager =@managerVar
+    WHERE a.IDAssVA =@managerVar
     UNION ALL
     SELECT a.IDAssVA,a.IDManager,a.NameAssVA as AssVA, c.NameAssVA as Manager
     FROM 
@@ -169,8 +169,12 @@ END
 
 GO
 
---exec createKPI11 'a','21,20',''
---exec createKPI11 'a','0',''
+exec sp_executesql N'exec createKPI11 @p0,@p1, @p2, @p3
+',N'@p0 nvarchar(4000),@p1 int,@p2 nvarchar(4000),@p3 nvarchar(4000)',@p0=N'userAndrei',@p1=2020,@p2=N'0',@p3=N'1,2,3,4,5,6,7'
+
+exec sp_executesql N'exec createKPI11 @p0,@p1, @p2, @p3
+',N'@p0 nvarchar(4000),@p1 int,@p2 nvarchar(4000),@p3 nvarchar(4000)',@p0=N'userAndrei',@p1=2020,@p2=N'8',@p3=N'1,2,3,4,5,6,7'
+
 
 --select * from KPI11Managers
 --select * from KPI11Clients
