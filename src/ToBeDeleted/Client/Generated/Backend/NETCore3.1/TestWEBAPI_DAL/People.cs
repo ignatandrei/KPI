@@ -155,12 +155,12 @@ namespace TestWEBAPI_DAL
             });
             modelBuilder.Entity<dboClients>()
                 .Ignore(it => it.iduclient)
-                .Ignore(it=>it.MyDepth)
+                //.Ignore(it=>it.MyDepth)
                 ;
 
-            modelBuilder.Entity<dboAssVA>()
-                .Ignore(it => it.MyDepth)
-                ;
+            //modelBuilder.Entity<dboAssVA>()
+            //    .Ignore(it => it.MyDepth)
+            //    ;
         }
         
         public async Task<int> LevelManager(long id)
@@ -195,7 +195,7 @@ namespace TestWEBAPI_DAL
                 {
                     case 2:
                         //top
-                        var allClients = await dboClients.Select(it => it.idclient / DatabaseContext.DiffClients).ToArrayAsync();
+                        var allClients = await dboClients.Select(it => it.idclient).ToArrayAsync();
                         Clients = string.Join(",", allClients);
                         break;
                     case 1:

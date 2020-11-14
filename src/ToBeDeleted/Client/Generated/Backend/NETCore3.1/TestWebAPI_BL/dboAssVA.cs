@@ -6,6 +6,6 @@ namespace TestWebAPI_BL
 {
     public partial class dboAssVA
     {
-        public int MyDepth { get; set; }
+        public int MyDepth;
     }
 }

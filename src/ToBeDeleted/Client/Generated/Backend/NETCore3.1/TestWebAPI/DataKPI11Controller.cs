@@ -106,14 +106,34 @@ namespace TestWebAPI
                 d.Clients.Add(client.Key, new HashSet<long>());
             }
             var l = d.Clients[client.Key];
-            if (client.Value > 0)
+            switch (client.Value)
             {
-                l.Add(client.Value);
+                case int i when i == 0:
+
+                    if (l.Contains(i))
+                    {
+                        l.Remove(-client.Value);
+                        if (l.Count == 0)
+                            d.ManagerIds.Remove(client.Key);
+                    }
+                    else
+                    {
+                        l.Add(client.Value);
+                    }
+                    break;
+
+                case int i when i > 0:
+                    l.Add(client.Value);
+                    break;
+
+                case int i when i < 0:
+                    l.Remove(-client.Value);
+                    if (l.Count == 0)
+                        d.ManagerIds.Remove(client.Key);
+                    break;
+
             }
-            else
-            {
-                l.Remove(-client.Value);
-            }
+
             return d;
         }
         [HttpPost("{userId}")]
@@ -130,16 +150,32 @@ namespace TestWebAPI
             {
                 throw new ArgumentException($"manager {manager.Value} has level {m}, not {manager.Key}");
             }
+            switch (manager.Value)
+            {
+                case int i when i == 0:
+                    
+                    if (l.Contains(i))
+                    {
+                        l.Remove(-manager.Value);
+                        if (l.Count == 0)
+                            d.ManagerIds.Remove(manager.Key);
+                    }
+                    else
+                    {
+                        l.Add(manager.Value);
+                    }
+                    break;
 
-            if (manager.Value > 0)
-            {
-                l.Add(manager.Value);
-            }
-            else
-            {
-                l.Remove(-manager.Value);
-                if (l.Count == 0)
-                    d.ManagerIds.Remove(manager.Key);
+                case int i when i > 0:
+                    l.Add(manager.Value);
+                    break;
+
+                case int i when i < 0:
+                    l.Remove(-manager.Value);
+                    if (l.Count == 0)
+                        d.ManagerIds.Remove(manager.Key);
+                    break;
+
             }
             return d;
         }

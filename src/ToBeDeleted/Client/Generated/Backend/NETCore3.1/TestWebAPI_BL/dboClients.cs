@@ -4,6 +4,6 @@
     {
         public int? iduclient { get; set; }
 
-        public int MyDepth { get; set; }
+        public int MyDepth;
     }
 }
