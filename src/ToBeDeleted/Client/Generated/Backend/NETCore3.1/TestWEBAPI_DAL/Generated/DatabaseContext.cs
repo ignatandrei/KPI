@@ -37,8 +37,7 @@ namespace TestWEBAPI_DAL
             
             public virtual DbSet<dbotest> dbotest{ get; set; }
             
-            public virtual DbSet<dboTestAndrei> dboTestAndrei{ get; set; }
-                    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -85,9 +84,7 @@ namespace TestWEBAPI_DAL
                 .ToView("test","dbo")
                 .HasNoKey();
          
-            modelBuilder.Entity<dboTestAndrei>()
-                .ToTable("TestAndrei","dbo")
-                .HasKey(it=>it.id);
+           
                      //mapping columns if have spaces
 
 
@@ -159,73 +156,6 @@ namespace TestWEBAPI_DAL
                     
                         modelBuilder.Entity<dbotest>().Property(it => it.name).HasColumnName("name");
                     
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a10).HasColumnName("A10");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a11).HasColumnName("A11");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a12).HasColumnName("A12");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a13).HasColumnName("A13");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a14).HasColumnName("A14");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a15).HasColumnName("A15");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a16).HasColumnName("A16");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a17).HasColumnName("A17");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a18).HasColumnName("A18");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a19).HasColumnName("A19");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a2).HasColumnName("A2");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a20).HasColumnName("A20");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a21).HasColumnName("A21");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a22).HasColumnName("A22");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a23).HasColumnName("A23");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a24).HasColumnName("A24");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a25).HasColumnName("A25");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a26).HasColumnName("A26");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a27).HasColumnName("A27");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a28).HasColumnName("A28");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a29).HasColumnName("A29");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a3).HasColumnName("A3");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a30).HasColumnName("A30");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a31).HasColumnName("A31");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a32).HasColumnName("A32");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a33).HasColumnName("A33");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a34).HasColumnName("A34");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a4).HasColumnName("A4");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a5).HasColumnName("A5");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a6).HasColumnName("A6");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a7).HasColumnName("A7");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a8).HasColumnName("A8");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.a9).HasColumnName("A9");
-                    
-                        modelBuilder.Entity<dboTestAndrei>().Property(it => it.id).HasColumnName("id");
                                 OnModelCreatingPartial(modelBuilder);
             Seed(modelBuilder);
         }

@@ -81,7 +81,6 @@ namespace TestWebAPI
             
 			services.AddTransient<IRepositoryView<dbotest>, dbotest_Repository>();
             
-			services.AddTransient<IRepository<dboTestAndrei,Int32>, dboTestAndrei_Repository>();
              
          }
 
