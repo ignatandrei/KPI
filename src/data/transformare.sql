@@ -103,6 +103,7 @@ INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VAL
 go
 SET IDENTITY_INSERT [dbo].[AssVA] OFF
 go
+
 INSERT INTO [AssVA]
           ([ShortNameAssVA]
            ,[NameAssVA]
@@ -252,9 +253,11 @@ inner join Category ca on ca.NameCategory = cat.[CategorieClienti/ Client mama]
   --select * from ClientsCategory
 
 
-  select cl.NameClient,co.NameCounty from AssVAClientsCounties asscc
+  select 
+  PR.[Sales IAN 2020 ACT],PR.[Sales Ian 2020 PL], CL.NameClient
+  ,asscc.IDAssVAClientsCounties from AssVAClientsCounties asscc
   inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
   inner join Clients cl on cl.IDClient =cc.IDClient
-  inner join County co on cc.IDCounty = cc.IDCounty
-
-  
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  --select * from ClientsCounties  where IDClient = 4857
