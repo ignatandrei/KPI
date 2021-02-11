@@ -1,3 +1,9 @@
+delete from [ClientsCounties] where IDClientsCounties>11
+delete from County where IDCounty>5
+delete from AssVA where IDAssVA>21
+delete from Region where IDRegion>4
+  
+
 update ImportSql$ set NumeAssVA =trim(NumeAssVA)
 go
 drop view viewDatePrimareAssVA
@@ -24,7 +30,9 @@ SELECT  [Row],[Color]
       ,[Sales Feb 2020 PL]
       ,[Sales Feb 2020 ACT]
       ,[Volume 2019 ACT]
-      ,[Volume 2020 ACT]
+      ,[Volume 2020 ACT],
+ coalesce([Adresa de livare], [Adresa de livrare],[Adresa livrare],
+ [CategorieClienti/ Client mama]) as NumeFirmaLocala
   FROM  [ImportSql$]
   where Color=4142
 
@@ -69,20 +77,20 @@ SELECT  [Row],[Color]
   --and len(Judet)=2 
   --order by 1
 
-delete from Region where IDRegion>3
+
 go
 INSERT INTO [dbo].[Region]
            ([ShortNameRegion]
            ,[NameRegion])
 
-select distinct Judet, Judet from viewDatePrimareAssVA
+select distinct Regiune, Regiune from viewDatePrimareAssVA
 
-  where Judet is not null 
-  and len(Judet)=2 
-  order by 1
+  where Regiune is not null 
+  --and len(Regiune)=2 
+  --order by 1
 
 GO
-delete from AssVA where IDAssVA>21
+
 
 INSERT INTO [dbo].[AssVA]
           ([ShortNameAssVA]
@@ -94,6 +102,8 @@ group by NumeAssVA
 having Len(NUmeAssVA)>0
 
 go
+
+
 INSERT INTO [dbo].[AssVA]
           ([ShortNameAssVA]
            ,[NameAssVA]
@@ -103,10 +113,12 @@ select 'a',NumeAssVA, null from viewDatePrimareAssVA
 group by NumeAssVA
 having Len(NUmeAssVA)>0
 go
-select top 1005* from AssVA
-
+drop view viewNameManager1
+go
+create view viewNameManager1
+as
 select 
-q.NameAssVA as ASSVA, man.NumeAssVA as Manager
+q.NameAssVA as ASSVA, man.NumeAssVA as Manager, a.IDAssVA as IDManager
 
  from(
 select 
@@ -120,13 +132,52 @@ group by ass.NumeAssVA
 --having ass.NumeAssVA like '%ava%'
 --or ass.NumeAssVA like '%rand%'
 ) q
-inner join viewDatePrimareAssVAManager man
-on man.Row = q.ManRow
+inner join viewDatePrimareAssVAManager man on man.Row = q.ManRow
+inner join AssVA a on a.NameAssVA = man.NumeAssVA
+
+  go
+
+  --select * from viewNameManager1
+  go
+  update AssVA
+  set IDManager = m.IDManager
+  from AssVA a inner join viewNameManager1 m
+  on a.NameAssVA = m.ASSVA
+
+  go
+  insert into County(IDRegion, NameCounty,ShortNameCounty)
+
+  select distinct r.IDRegion,  a.Judet , a.Judet from viewDatePrimareAssVA a
+  inner join Region r on r.NameRegion = a.Regiune
+	where len(a.judet)>0 and len(a.Judet)<5 --BR+TL
+
+	go
 
 
 
 
-           
+INSERT INTO [dbo].[Clients]
+           ([ShortNameClient]
+           ,[NameClient])
+     select distinct  'a',a.NumeFirmaLocala from viewDatePrimareAssVA  a
+	 where len(a.NumeFirmaLocala)>0
+GO
 
 
-  
+
+INSERT INTO [dbo].[ClientsCounties]
+           ([IDClient]
+           ,[IDCounty])
+select distinct c.IDClient, co.IDCounty from viewDatePrimareAssVA a
+inner join County co on co.NameCounty = a.Judet  
+inner join Clients c on c.NameClient = a.NumeFirmaLocala
+
+GO
+
+
+
+  select * from AssVA 
+  select * from Region
+  select * from County
+  select * from Clients
+  select * from [ClientsCounties]
