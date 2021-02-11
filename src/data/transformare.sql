@@ -1,5 +1,9 @@
+delete from ClientsCategory where id>7
+delete from Category where IDCategory>2
+delete from AssVAClientsCounties where IDAssVAClientsCounties>11
 delete from [ClientsCounties] where IDClientsCounties>11
 delete from County where IDCounty>5
+delete from Clients where IDClient>7
 delete from AssVA where IDAssVA>21
 delete from Region where IDRegion>4
   
@@ -174,10 +178,68 @@ inner join Clients c on c.NameClient = a.NumeFirmaLocala
 
 GO
 
+INSERT INTO [AssVAClientsCounties]
+           ([IDClientsCounties]
+           ,[IDAssVA])
 
 
-  select * from AssVA 
-  select * from Region
-  select * from County
-  select * from Clients
-  select * from [ClientsCounties]
+select cc.IDClientsCounties ,ass.IDAssVA  from viewDatePrimareAssVA a
+inner join County co on co.NameCounty = a.Judet  
+inner join Clients c on c.NameClient = a.NumeFirmaLocala
+inner join AssVA ass on a.NumeAssVA = ass.NameAssVA
+inner join ClientsCounties cc on cc.IDClient = c.IDClient and cc.IDCounty = co.IDCounty
+
+go
+drop view viewCategorie
+go
+create view viewCategorie
+as
+
+select row , [CategorieClienti/ Client mama] from ImportSql$ 
+where Color = 24
+and len([CategorieClienti/ Client mama])<5
+go
+
+insert into Category(ShortNameCategory, NameCategory)
+select distinct [CategorieClienti/ Client mama] , [CategorieClienti/ Client mama]  from viewCategorie
+
+go
+
+drop view viewFirmaCategorie
+go
+create view viewFirmaCategorie
+as
+select 
+max(ass.ROw) as assRow ,ass.NumeFirmaLocala , max(cat.Row) as CategorieRow
+from viewDatePrimareAssVA ass
+inner join viewCategorie cat
+on cat.row<ass.row
+where Len(ass.NUmeAssVA)>0
+and len(cat.[CategorieClienti/ Client mama])>0
+group by ass.NumeFirmaLocala 
+
+go
+
+INSERT INTO [dbo].[ClientsCategory]
+           ([IDClient]
+           ,[IDCategory])
+
+select cl.IDClient,ca.IDCategory
+from viewDatePrimareAssVA ass
+inner join viewFirmaCategorie fc on ass.Row = fc.assRow
+inner join viewCategorie cat on cat.Row = fc.CategorieRow
+inner join Clients cl on cl.NameClient = ass.NumeFirmaLocala
+inner join Category ca on ca.NameCategory = cat.[CategorieClienti/ Client mama] 
+
+
+--select cl.NameClient, count(*) from Clients cl
+--group by cl.NameClient
+--order by 2 desc
+  --select * from AssVA 
+  --select * from Region
+  --select * from County
+  --select * from Clients
+  --select * from [ClientsCounties]
+
+  --select * from AssVAClientsCounties
+  --select * from ClientsCategory
