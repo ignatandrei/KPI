@@ -1,11 +1,13 @@
-delete from ClientsCategory where id>7
-delete from Category where IDCategory>2
-delete from AssVAClientsCounties where IDAssVAClientsCounties>11
-delete from [ClientsCounties] where IDClientsCounties>11
-delete from County where IDCounty>5
-delete from Clients where IDClient>7
-delete from AssVA where IDAssVA>21
-delete from Region where IDRegion>4
+delete from ACTPL
+delete from AssVAClientsCounties --where IDAssVAClientsCounties>11
+delete from ClientsCategory --where id>7
+delete from Category --where IDCategory>2
+delete from AssVAClientsCounties --where IDAssVAClientsCounties>11
+delete from [ClientsCounties] --where IDClientsCounties>11
+delete from County --where IDCounty>5
+delete from Clients --where IDClient>7
+delete from AssVA --where IDAssVA>21
+delete from Region --where IDRegion>4
   
 
 update ImportSql$ set NumeAssVA =trim(NumeAssVA)
@@ -95,8 +97,13 @@ select distinct Regiune, Regiune from viewDatePrimareAssVA
 
 GO
 
-
-INSERT INTO [dbo].[AssVA]
+SET IDENTITY_INSERT [dbo].[AssVA] ON 
+GO
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (0, N'FK', N'FakeManager', NULL)
+go
+SET IDENTITY_INSERT [dbo].[AssVA] OFF
+go
+INSERT INTO [AssVA]
           ([ShortNameAssVA]
            ,[NameAssVA]
            ,[IDManager])
@@ -160,7 +167,7 @@ inner join AssVA a on a.NameAssVA = man.NumeAssVA
 
 
 
-INSERT INTO [dbo].[Clients]
+INSERT INTO [Clients]
            ([ShortNameClient]
            ,[NameClient])
      select distinct  'a',a.NumeFirmaLocala from viewDatePrimareAssVA  a
@@ -243,3 +250,11 @@ inner join Category ca on ca.NameCategory = cat.[CategorieClienti/ Client mama]
 
   --select * from AssVAClientsCounties
   --select * from ClientsCategory
+
+
+  select cl.NameClient,co.NameCounty from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on cc.IDCounty = cc.IDCounty
+
+  
