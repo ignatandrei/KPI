@@ -1,3 +1,32 @@
+drop function [dbo].[SP_CCEncrypt]
+go
+create function [dbo].[SP_CCEncrypt]
+( @Ptext as varchar(500),@SHIFTNO as tinyint  )
+returns varchar(500)
+AS
+BEGIN
+
+declare @Etext as varchar(500) =''
+declare @pc as varchar(1)
+Declare @i as smallint = 1
+Declare @n as smallint
+set @n = len(@Ptext)
+set @Ptext = upper(@Ptext)
+while @i < = @n
+BEGIN
+set @pc = SUBSTRING(@Ptext, @i, 1)
+if ascii(@pc) between 65 and 90
+if ascii(@pc)+@SHIFTNO > 90
+set @pc = char((ascii(@pc)+@SHIFTNO)-90+64)
+else
+set @pc = char((ascii(@pc)+@SHIFTNO))
+set @Etext = @Etext + @pc
+Set @i = @i + 1
+END
+return  @Etext
+END
+
+go
 delete from ACTPL
 delete from AssVAClientsCounties --where IDAssVAClientsCounties>11
 delete from ClientsCategory --where id>7
@@ -27,17 +56,7 @@ SELECT  [Row],[Color]
       ,[Customer Name/Plant]
       ,[Ship-to party]
       ,[Adresa de livare]
-      ,[Sales IAN 2019 ACT]
-      ,[Sales Ian 2020 PL]
-      ,[Sales IAN 2020 ACT]
-      ,[Volume Ian 2019 ACT]
-      ,[Volume Ian 2020 ACT]
-      ,[Sales FEB 2019 ACT]
-      ,[Sales Feb 2020 PL]
-      ,[Sales Feb 2020 ACT]
-      ,[Volume 2019 ACT]
-      ,[Volume 2020 ACT],
- coalesce([Adresa de livare], [Adresa de livrare],[Adresa livrare],
+, coalesce([Adresa de livare], [Adresa de livrare],[Adresa livrare],
  [CategorieClienti/ Client mama]) as NumeFirmaLocala
   FROM  [ImportSql$]
   where Color=4142
@@ -61,16 +80,6 @@ SELECT  [Row],[Color]
       ,[Customer Name/Plant]
       ,[Ship-to party]
       ,[Adresa de livare]
-      ,[Sales IAN 2019 ACT]
-      ,[Sales Ian 2020 PL]
-      ,[Sales IAN 2020 ACT]
-      ,[Volume Ian 2019 ACT]
-      ,[Volume Ian 2020 ACT]
-      ,[Sales FEB 2019 ACT]
-      ,[Sales Feb 2020 PL]
-      ,[Sales Feb 2020 ACT]
-      ,[Volume 2019 ACT]
-      ,[Volume 2020 ACT]
   FROM  [ImportSql$]
   where Color=15
 
@@ -99,7 +108,7 @@ GO
 
 SET IDENTITY_INSERT [dbo].[AssVA] ON 
 GO
-INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (0, N'FK', N'FakeManager', NULL)
+INSERT [dbo].[AssVA] ([IDAssVA], [ShortNameAssVA], [NameAssVA], [IDManager]) VALUES (0, N'FK', N'Fake Manager', NULL)
 go
 SET IDENTITY_INSERT [dbo].[AssVA] OFF
 go
@@ -252,12 +261,179 @@ inner join Category ca on ca.NameCategory = cat.[CategorieClienti/ Client mama]
   --select * from AssVAClientsCounties
   --select * from ClientsCategory
 
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
 
-  select 
-  PR.[Sales IAN 2020 ACT],PR.[Sales Ian 2020 PL], CL.NameClient
-  ,asscc.IDAssVAClientsCounties from AssVAClientsCounties asscc
+
+
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[Sales IAN 2019 ACT],0),coalesce(excel.[Sales Ian 2019 ACT],0), 
+  1,2019
+  from AssVAClientsCounties asscc
   inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
   inner join Clients cl on cl.IDClient =cc.IDClient
   inner join County co on co.IDCounty = cc.IDCounty
   inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
-  --select * from ClientsCounties  where IDClient = 4857
+  inner join ImportSql$ excel on excel.Row = pr.Row
+  
+
+  
+
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
+
+
+
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[Sales IAN 2020 ACT],0),coalesce(excel.[Sales Ian 2020 PL],0), 
+  1,2020
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+  
+
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
+
+
+
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[Sales FEB 2020 ACT],0),coalesce(excel.[Sales FEB 2020 PL],0), 
+  2,2020
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
+
+
+
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[Sales FEB 2019 ACT],0),coalesce(excel.[Sales FEB 2019 ACT],0), 
+  2,2019
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+  
+
+
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
+
+  
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[SALES 2020 MAR PL],0),coalesce(excel.[Sales 2020 MAR ACT],0), 
+  3,2020
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
+
+
+
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[Sales 2019 MAR ACT],0),coalesce(excel.[Sales 2019 MAR ACT],0), 
+  3,2019
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+  
+  
+
+
+INSERT INTO [dbo].[ACTPL]
+           ([IDAssVAClientsCounties]
+           ,[Actual]
+           ,[Plan]
+           ,[Month]
+           ,[Year])
+
+  
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[SALES APR 2020 PL],0),coalesce(excel.[Sales APR 2020 ACT],0), 
+  4,2020
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+  
+  select asscc.IDAssVAClientsCounties ,
+  coalesce(excel.[Sales 2019 APR ACT],0),coalesce(excel.[Sales 2019 APR ACT],0), 
+  3,2019
+  from AssVAClientsCounties asscc
+  inner join ClientsCounties cc on cc.IDClientsCounties = asscc.IDClientsCounties
+  inner join Clients cl on cl.IDClient =cc.IDClient
+  inner join County co on co.IDCounty = cc.IDCounty
+  inner join viewDatePrimareAssVA pr on pr.NumeFirmaLocala = cl.NameClient and co.NameCounty = pr.Judet
+  inner join ImportSql$ excel on excel.Row = pr.Row
+  
+  
+
+  
+  --select * from ACTPL 
+
+
+  update AssVA set NameAssVA = dbo.SP_CCEncrypt(NameAssVA,3)
+
+  update AssVA 
+set ShortNameAssVA = sn
+from 
+AssVA a inner join (
+SELECT nameassva, string_agg(substring(value,1,1),' ') sn FROM 
+AssVA
+cross apply
+STRING_SPLIT(NameAssVA, ' ')
+
+group by NameAssVA)  q on q.NameAssVA  = a.NameAssVA;
+
+--select distinct Month,YEAR from ACTPL order by 2, 1
+
+
+update ACTPL set Actual = Actual * FLOOR(RAND()*(10-5+1)+5) 
+update ACTPL set [Plan] = [Plan]* FLOOR(RAND()*(10-1+1)+1);
+
+--select top 10 * from ACTPL where Year=2019 order by IDACTPL
