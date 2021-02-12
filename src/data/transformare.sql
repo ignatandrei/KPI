@@ -419,7 +419,7 @@ INSERT INTO [dbo].[ACTPL]
 
   update AssVA set NameAssVA = dbo.SP_CCEncrypt(NameAssVA,3)
 
-  update AssVA 
+update AssVA 
 set ShortNameAssVA = sn
 from 
 AssVA a inner join (
@@ -429,6 +429,18 @@ cross apply
 STRING_SPLIT(NameAssVA, ' ')
 
 group by NameAssVA)  q on q.NameAssVA  = a.NameAssVA;
+
+update Clients 
+set ShortNameClient = sn
+from 
+Clients a inner join (
+SELECT NameClient , string_agg(substring(value,1,1),' ') sn FROM 
+Clients
+cross apply
+STRING_SPLIT(NameClient, ' ')
+
+group by NameClient)  q on q.NameClient= a.NameClient;
+
 
 --select distinct Month,YEAR from ACTPL order by 2, 1
 
