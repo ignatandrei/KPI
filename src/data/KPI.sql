@@ -1,78 +1,12 @@
-DROP VIEW [dbo].[vwKPI11Data]
-GO
 
-/****** Object:  View [dbo].[vwKPI11Data]    Script Date: 10/31/2020 9:00:18 PM ******/
+USE [tests]
+GO
+/****** Object:  StoredProcedure [dbo].[createKPI11]    Script Date: 2/13/2021 12:16:54 PM ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
-
-/****** Object:  View [dbo].[vwKPI11Data]    Script Date: 11/11/2020 8:45:08 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-
-CREATE VIEW [dbo].[vwKPI11Data]
-AS
-SELECT dbo.ACTPL.IDACTPL, dbo.ACTPL.IDAssVAClientsCounties, dbo.ACTPL.Actual, dbo.ACTPL.[Plan], dbo.AssVAClientsCounties.IDAssVA, dbo.Clients.IDClient
-, dbo.ACTPL.Month, dbo.ACTPL.Year
-FROM  dbo.ClientsCounties INNER JOIN
-         dbo.Clients ON dbo.ClientsCounties.IDClient = dbo.Clients.IDClient INNER JOIN
-         dbo.ACTPL INNER JOIN
-         dbo.AssVAClientsCounties ON dbo.ACTPL.IDAssVAClientsCounties = dbo.AssVAClientsCounties.IDAssVAClientsCounties ON dbo.ClientsCounties.IDClientsCounties = dbo.AssVAClientsCounties.IDClientsCounties
-GO
-
-
-
-DROP TABLE [dbo].[KPI11Managers]
-GO
-
-/****** Object:  Table [dbo].[KPI11]    Script Date: 9/26/2020 11:43:40 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[KPI11Managers](
-	[UserId] nvarchar(1000) not null,
---	[IDClient] [bigint] NULL,
-	[IDAssVA] [bigint] NOT NULL,
-	[IDManager] [bigint] NULL,
-	--[PlanYTD] [money] NULL,
-	--[ActualYTD] [money] NULL
--- CONSTRAINT [PK_KPI11] PRIMARY KEY CLUSTERED 
---(
---	[ID] ASC
---)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-
-go
-DROP TABLE [dbo].[KPI11Clients]
-GO
-
-/****** Object:  Table [dbo].[KPI11]    Script Date: 9/26/2020 11:43:40 AM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[KPI11Clients](
-	[UserId] nvarchar(1000) not null,
-	[IDClient] [bigint] NOT NULL,
-	[IDRegion] [bigint] NULL,
-) ON [PRIMARY]
-
-drop procedure createKPI11
---DROP TABLE KPI11
-go
-CREATE PROCEDURE [dbo].[createKPI11](
+ALTER PROCEDURE [dbo].[createKPI11](
 @userId nvarchar(1000),
 @year int,
 @managers nvarchar(1000), 
@@ -86,9 +20,9 @@ declare @clientsId table(Client int)
 if(len(trim(@clients)))>0
 insert into @clientsId (Client)
 select * from String_Split(@clients,',')
---else
---insert into @clientsId (Client)
---select IDClient from Clients
+else
+insert into @clientsId (Client)
+select IDClient from Clients
 
 
 delete from KPI11Managers  where @userId = UserId
@@ -150,6 +84,8 @@ end
 --where c.Year =Year and c.Month <@Month
 --group by IDClient, c.IDAssVA,IDCounty, m.IDManager
 
+--select * from @clientsId
+
 ;with Data(IdManager, yearToData,PlanYTD, ActualYTD ) as
 (select  m.IDManager, kpi.Year
 ,sum([Plan]) as PlanYTD
@@ -167,14 +103,9 @@ LAG(PlanYTD) OVER (ORDER BY IDManager, yearToData) PreviousValuePlanYTD,
 where d.yearToData >=@year-1
 END
 
-GO
+go
 
 exec sp_executesql N'exec createKPI11 @p0,@p1, @p2, @p3
-',N'@p0 nvarchar(4000),@p1 int,@p2 nvarchar(4000),@p3 nvarchar(4000)',@p0=N'userAndrei',@p1=2020,@p2=N'0',@p3=N'1,2,3,4,5,6,7'
+',N'@p0 nvarchar(4000),@p1 int,@p2 nvarchar(4000),@p3 nvarchar(4000)',
+@p0=N'userAndrei',@p1=2020,@p2=N'22',@p3=N''
 
-exec sp_executesql N'exec createKPI11 @p0,@p1, @p2, @p3
-',N'@p0 nvarchar(4000),@p1 int,@p2 nvarchar(4000),@p3 nvarchar(4000)',@p0=N'userAndrei',@p1=2020,@p2=N'8',@p3=N'1,2,3,4,5,6,7'
-
-
---select * from KPI11Managers
---select * from KPI11Clients
