@@ -183,7 +183,21 @@ namespace TestWEBAPI_DAL
             }
             return i;
         }
-        public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data,string userId)
+        public async Task<KPI11ShowData[]> GetDataKP11(DataKPI11 data, string userId)
+        {
+            var createKPI11 = await GetDataKP11Original(data,userId);
+            var ret = createKPI11
+                //.Where(it => it.yearToData == year)
+                .Select(it => new KPI11ShowData()
+                {
+                    Value = it.ActualYTD,
+                    PrevYearValue = it.PreviousValueActualYTD,
+                    AssVA = this.dboAssVA.First(a => a.idassva == it.IDManager)
+                }).ToArray();
+            return ret;
+
+        }
+        public async Task<createKPI11[]> GetDataKP11Original(DataKPI11 data,string userId)
         {
             int year = 2020;
             var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
@@ -224,16 +238,7 @@ namespace TestWEBAPI_DAL
             }
 
             var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},{year}, {Managers}, {Clients}").ToArrayAsync();
-            var ret = createKPI11
-                .Where(it=>it.yearToData==year)
-                .Select(it => new KPI11ShowData()
-            {
-                Value = it.ActualYTD,
-                PrevYearValue= it.PreviousValueActualYTD ,
-                AssVA = this.dboAssVA.First(a => a.idassva == it.IDManager)
-            }).ToArray();
-            return ret;
-
+            return createKPI11;
             //var idAssVA = new List<long>();
             //var managers = new Dictionary<long, List<long>>();
             //if (data.Managers?.Length > 0)

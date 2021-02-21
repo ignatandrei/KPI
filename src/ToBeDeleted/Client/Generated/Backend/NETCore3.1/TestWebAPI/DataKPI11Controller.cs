@@ -183,5 +183,12 @@ namespace TestWebAPI
             var d = this.GetActualFiltersForUser(userId);
             return dc.GetDataKP11(d,userId);
         }
+
+        [HttpGet("{userId}")]
+        public Task<createKPI11[]> GetDataYTD([FromRoute] string userId, [FromServices] DatabaseContext dc)
+        {
+            var d = this.GetActualFiltersForUser(userId);
+            return dc.GetDataKP11Original(d, userId);
+        }
     }
 }

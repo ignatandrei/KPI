@@ -217,7 +217,7 @@ namespace TestWebAPI
             <next>
               <block type='text_print'>
                 <value name='TEXT'>
-                  <block type='api_DataKPI11_GetData__userId__GET'>
+                  <block type='api_DataKPI11_GetDataYTD__userId__GET'>
                     <value name='val_userId'>
                       <shadow type='text'>
                         <field name='TEXT'>userAndrei</field>
