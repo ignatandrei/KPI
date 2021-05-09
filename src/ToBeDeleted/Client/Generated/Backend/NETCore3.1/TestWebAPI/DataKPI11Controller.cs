@@ -209,7 +209,7 @@ namespace TestWebAPI
         [HttpGet]
         public Task<DateYTD[]> GetDates( [FromServices] DatabaseContext dc)
         {
-            return dc.GetDatesKPI11();
+            return dc.GetDatesStartEndKPI11();
         }
 
     }

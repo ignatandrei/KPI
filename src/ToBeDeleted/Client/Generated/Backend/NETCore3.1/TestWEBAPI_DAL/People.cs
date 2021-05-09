@@ -199,7 +199,17 @@ namespace TestWEBAPI_DAL
         }
         public async Task<createKPI11[]> GetDataKP11Original(DataKPI11 data,string userId)
         {
-            int year = 2020;
+            var yearStart = data.StartDate;
+            var yearEnd = data.EndDate;
+            var dates = await this.GetDatesStartEndKPI11();
+            if (yearStart == null)
+                yearStart = dates[0];
+
+            if (yearEnd== null)
+                yearEnd = dates[dates.Length-1];
+
+
+
             var Managers =string.Join(",", data.ManagerIds.SelectMany(it => it.Value).ToArray());
             string Clients = "";
             if ((data.Clients?.Count ?? 0) > 0) {
@@ -237,7 +247,8 @@ namespace TestWEBAPI_DAL
                 }
             }
 
-            var createKPI11 = await this.createKPI11.FromSqlInterpolated($"exec createKPI11 {userId},{year}, {Managers}, {Clients}").ToArrayAsync();
+            var createKPI11 = await this.createKPI11.FromSqlInterpolated(
+                $"exec createKPI11 {userId},{yearStart.Year},{yearStart.Month},{yearEnd.Year},{yearEnd.Month}, {Managers}, {Clients}").ToArrayAsync();
             return createKPI11;
             //var idAssVA = new List<long>();
             //var managers = new Dictionary<long, List<long>>();
@@ -345,7 +356,7 @@ namespace TestWEBAPI_DAL
             //return ret.ToArray();
         }
         public virtual DbSet<DateYTD> DateYTD { get; set; }
-        public async Task<DateYTD[]> GetDatesKPI11()
+        public async Task<DateYTD[]> GetDatesStartEndKPI11()
         {
             //potential problem if end is not same year
             var ytdEnd = await DateYTD

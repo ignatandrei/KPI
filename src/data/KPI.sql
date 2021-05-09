@@ -8,7 +8,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 ALTER PROCEDURE [dbo].[createKPI11](
 @userId nvarchar(1000),
-@year int,
+@yearStart int,
+@monthStart int,
+@yearEnd int,
+@monthEnd int,
 @managers nvarchar(1000), 
 @clients nvarchar(100)
 )
@@ -87,20 +90,26 @@ end
 --select * from @clientsId
 
 ;with Data(IdManager, yearToData,PlanYTD, ActualYTD ) as
-(select  m.IDManager, kpi.Year
+(select  m.IDManager, kpi.Year, kpi.Month
 ,sum([Plan]) as PlanYTD
 ,sum(Actual) as ActualYTD 
 from vwKPI11Data kpi
 inner join KPI11Managers m on kpi.IDAssVA = m.IDAssVA and m.UserId= @userId
 inner join @clientsId c on kpi.IDClient= c.Client
-group by  m.IDManager, kpi.Year
+group by  m.IDManager, kpi.Year, kpi.Month
 )
 select 
 LAG(ActualYTD) OVER (ORDER BY IDManager, yearToData) PreviousValueActualYTD,
 LAG(PlanYTD) OVER (ORDER BY IDManager, yearToData) PreviousValuePlanYTD,
 --LEAD(Value) OVER (ORDER BY IDManager, yearToData) NextValue,
 * from Data d
-where d.yearToData >=@year-1
+where
+(d.yearToData >= @yearStart   and d.MonthToData>= @monthStart)
+
+and 
+( d.yearToData<=@yearEnd and d.MonthToData<= @monthEnd)
+
+
 END
 
 go
