@@ -61,7 +61,22 @@ namespace TestWebAPI
         //    }
         //    return d;            
         //}
-
+        [HttpPost("{userId}")]
+        public DataKPI11 SetStartDate([FromRoute] string userId, [FromBody] DateYTD start, [FromServices] DatabaseContext dc)
+        {
+            var d = GetActualFiltersForUser(userId);
+            d.StartDate = start;
+            d.StartDate.GenerateId();
+            return d;
+        }
+        [HttpPost("{userId}")]
+        public DataKPI11 SetEndDate([FromRoute] string userId, [FromBody] DateYTD start, [FromServices] DatabaseContext dc)
+        {
+            var d = GetActualFiltersForUser(userId);
+            d.EndDate = start;
+            d.EndDate.GenerateId();
+            return d;
+        }
         [HttpPost("{userId}")]
         public async Task< DataKPI11> AddClients([FromRoute] string userId, [FromBody] KVP client, [FromServices] DatabaseContext dc)
         {
@@ -177,6 +192,7 @@ namespace TestWebAPI
             }
             return d;
         }
+        [Obsolete]
         [HttpGet("{userId}")]
         public Task<KPI11ShowData[]> GetData([FromRoute] string userId, [FromServices]DatabaseContext dc)
         {

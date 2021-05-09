@@ -16,15 +16,16 @@ namespace TestWEBAPI_DAL
             //public Dictionary<int, HashSet<long>> RegionIds;
             public Dictionary<int, HashSet<long>> Clients;
             public Dictionary<int, HashSet<long>> ManagerIds;
-
-            //public KeyValuePair<int, HashSet<long>>[] Regions
-            //{
-            //    get
-            //    {
-            //        return RegionIds.Select(it => it).ToArray();
-            //    }
-            //}
-            public KeyValuePair<int, HashSet<long>>[] ClientsData
+            public DateYTD StartDate { get; set; }
+            public DateYTD EndDate { get; set; }
+        //public KeyValuePair<int, HashSet<long>>[] Regions
+        //{
+        //    get
+        //    {
+        //        return RegionIds.Select(it => it).ToArray();
+        //    }
+        //}
+        public KeyValuePair<int, HashSet<long>>[] ClientsData
             {
                 get
                 {
