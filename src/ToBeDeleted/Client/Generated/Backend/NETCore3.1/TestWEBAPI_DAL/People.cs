@@ -344,5 +344,26 @@ namespace TestWEBAPI_DAL
             //}
             //return ret.ToArray();
         }
+        public virtual DbSet<DateYTD> DateYTD { get; set; }
+        public async Task<DateYTD[]> GetDatesKPI11()
+        {
+            //potential problem if end is not same year
+            var ytdEnd = await DateYTD
+                .FromSqlRaw("select max(Year) as [Year] , max(Month) as [Month] , max(Year) * 100 +max(Month) as ID   from ACTPL")
+                .FirstOrDefaultAsync();
+
+            var ytdStart = await DateYTD
+                .FromSqlRaw("select min(Year) as [Year] , min(Month) as [Month] , min(Year) * 100 +min(Month) as ID   from ACTPL")
+                .FirstOrDefaultAsync();
+
+            var ret = new List<DateYTD>();
+            ret.Add(ytdStart);
+            while(ytdEnd.Year != ytdStart.Year || ytdEnd.Month != ytdStart.Month)
+            {
+                ytdStart += 1;
+                ret.Add(ytdStart);
+            }
+            return ret.ToArray();
+        }
     }
 }

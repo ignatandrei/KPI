@@ -9,7 +9,6 @@ using TestWEBAPI_DAL;
 
 namespace TestWebAPI
 {
-    
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class DataKPI11Controller : ControllerBase
@@ -24,7 +23,8 @@ namespace TestWebAPI
             return data[userId];
             
         }
-        [HttpGet]
+        
+            [HttpGet]
         public DataKPI11 CleanFiltersForUser(string userId)
         {
             if (data.ContainsKey(userId))
@@ -190,5 +190,11 @@ namespace TestWebAPI
             var d = this.GetActualFiltersForUser(userId);
             return dc.GetDataKP11Original(d, userId);
         }
+        [HttpGet]
+        public Task<DateYTD[]> GetDates( [FromServices] DatabaseContext dc)
+        {
+            return dc.GetDatesKPI11();
+        }
+
     }
 }
